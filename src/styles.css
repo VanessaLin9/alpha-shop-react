@@ -1,0 +1,74 @@
+.App {
+  font-family: "Noto Sans TC", sans-serif;
+  site-edge-margin: 15px;
+}
+body {
+  margin: 0;
+  background-color: #ffffff;
+  footer-background-color: #f6f7f8;
+  nav-icon: #2a2a2a;
+  social-icon: #808080;
+  main-text: #2a2a2a;
+  secondary-text: #808080;
+  active-color: lightblue;
+  font-size: 16px;
+  user-select: none;
+}
+.container {
+  margin: 0px 15px;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.mr-auto {
+  margin-right: auto !important;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+a {
+  text-decoration: none;
+}
+i {
+  color: #2a2a2a;
+}
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  line-height: 0.9;
+}
+.main-container {
+  display: flex;
+  /* border: 1px solid black; */
+  margin: 80px auto 0 auto;
+  width: 85%;
+}
+h2.register-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: #2a2a2a;
+  margin-bottom: 48px;
+}
+.align-start {
+  text-align: start;
+}
+.registe-container {
+  /* border: 1px solid tomato; */
+}
+.cart-container {
+  margin-top: 80px;
+  margin-left: 80px;
+}
