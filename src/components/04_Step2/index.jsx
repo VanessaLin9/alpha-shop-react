@@ -13,7 +13,7 @@ const Step2 = () => {
               id="shipping-standard"
               type="radio"
               name="shipping"
-              checked
+              // checked
             />
             <div className="radio-info">
               <div className="sending-type">

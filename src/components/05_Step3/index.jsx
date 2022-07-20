@@ -1,5 +1,5 @@
-import React from "react";
-import "./Step3.css";
+import React from 'react';
+import './Step3.css';
 
 const Step3 = () => {
   return (
