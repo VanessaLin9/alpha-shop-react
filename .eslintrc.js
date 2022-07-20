@@ -1,31 +1,29 @@
 module.exports = {
-  env: {
-    browser: true,
-  },
   extends: [
     // prettier-ignore
+    'react-app',
+    'react-app/jest',
     'airbnb',
-    'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
   ],
-  parser: '@babel/eslint-parser',
   settings: {
     'import/resolver': {
-      webpack: {
-        config: 'webpack.config.js',
+      node: {
+        paths: ['src'],
       },
     },
   },
-  plugins: ['flowtype'],
   rules: {
     'global-require': 0,
     'import/no-extraneous-dependencies': 0,
     'import/no-import-module-exports': 0,
+    'import/prefer-default-export': 0,
     'jsx-a11y/click-events-have-key-events': 0,
     'jsx-a11y/label-has-associated-control': 0,
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     'no-console': 0,
     'no-param-reassign': ['error', { props: false }],
+    'no-restricted-exports': 0,
     'react/button-has-type': 0,
     'react/destructuring-assignment': 0,
     'react/function-component-definition': [
@@ -39,6 +37,5 @@ module.exports = {
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
     'react/state-in-constructor': 0,
-    'react/jsx-props-no-spreading': 0,
   },
 };
