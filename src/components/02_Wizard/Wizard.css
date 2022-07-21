@@ -4,8 +4,6 @@
   align-items: center;
   /* border: 1px solid green; */
 }
-.progress-group {
-}
 .progress-icon {
   display: inline-block;
   width: 24px;
@@ -15,7 +13,7 @@
   border-radius: 50%;
   text-align: center;
 }
-.progress-icon.active {
+.progress-icon[data-order="true"] {
   background-color: #333333;
 }
 .text {
@@ -29,7 +27,7 @@
   font-size: 16px;
   color: #afb1bd;
 }
-.progress-label .active {
+.progress-label[data-order="true"] {
   color: #2a2a2a;
 }
 .progress-bar {
@@ -37,6 +35,6 @@
   width: 60px;
   border-top: 2px solid #afb1bd;
 }
-.progress-bar.active {
+.progress-bar[data-order="true"] {
   border-top-color: #2a2a2a;
 }

@@ -2,7 +2,7 @@ import '../styles.css';
 import React from 'react';
 
 import Header from './01_Header';
-import StepProgress from './02_StepProgress';
+import Wizard from './02_Wizard';
 import Step1 from './03_Step1';
 import Step2 from './04_Step2';
 import Step3 from './05_Step3';
@@ -35,7 +35,7 @@ const App = () => {
       <div className="main-container">
         <div className="register-container col col-lg-6 col-sm-12">
           <h2 className="register-title align-start">結帳</h2>
-          <StepProgress />
+          <Wizard step={progress} />
           {stepContent}
           {/* <ProgressControl /> */}
           <div className="mimic-btn">
