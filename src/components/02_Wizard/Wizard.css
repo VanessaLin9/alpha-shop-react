@@ -1,10 +1,10 @@
-.progress-container {
+.step-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   /* border: 1px solid green; */
 }
-.progress-icon {
+.step-icon {
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -13,7 +13,7 @@
   border-radius: 50%;
   text-align: center;
 }
-.progress-icon[data-order="true"] {
+.step-icon[data-order="true"] {
   background-color: #333333;
 }
 .text {
@@ -22,19 +22,19 @@
   font-size: 12px;
   line-height: 24px;
 }
-.progress-label {
+.step-label {
   font-weight: 400;
   font-size: 16px;
   color: #afb1bd;
 }
-.progress-label[data-order="true"] {
+.step-label[data-order="true"] {
   color: #2a2a2a;
 }
-.progress-bar {
+.step-bar {
   display: inline-block;
   width: 60px;
   border-top: 2px solid #afb1bd;
 }
-.progress-bar[data-order="true"] {
+.step-bar[data-order="true"] {
   border-top-color: #2a2a2a;
 }

@@ -12,17 +12,21 @@ import Footer from './08_Footer';
 
 //
 const App = () => {
-  const [progress, setProgress] = React.useState(0);
+  const [step, setStep] = React.useState(0);
   const goPage = (page) => {
-    setProgress((num) => {
+    setStep((num) => {
+      if (num + page > 2) {
+        return 2;
+      }
       return num + page;
     });
+    console.log('step', step);
   };
   let stepContent;
   let nextStep = '下一步';
-  if (progress === 0) {
+  if (step === 0) {
     stepContent = <Step1 />;
-  } else if (progress === 1) {
+  } else if (step === 1) {
     stepContent = <Step2 />;
   } else {
     nextStep = '確認下單';
@@ -35,11 +39,11 @@ const App = () => {
       <div className="main-container">
         <div className="register-container col col-lg-6 col-sm-12">
           <h2 className="register-title align-start">結帳</h2>
-          <Wizard step={progress} />
+          <Wizard step={step} />
           {stepContent}
           {/* <ProgressControl /> */}
           <div className="mimic-btn">
-            {progress <= 0 ? (
+            {step <= 0 ? (
               ''
             ) : (
               <button className="mimic-pre" onClick={() => goPage(-1)}>
