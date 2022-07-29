@@ -65,9 +65,6 @@ h2.register-title {
 .align-start {
   text-align: start;
 }
-.register-container {
-  /* border: 1px solid tomato; */
-}
 .cart-container {
   margin-top: 80px;
   margin-left: 80px;
@@ -85,4 +82,14 @@ h2.register-title {
   padding: 3px;
   border: 2px solid palevioletred;
   border-radius: 5px;
+}
+.cart {
+  border: 1px solid #f0f0f5;
+  border-radius: 8px;
+  padding: 24px;
+}
+.cart-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 34px;
 }
