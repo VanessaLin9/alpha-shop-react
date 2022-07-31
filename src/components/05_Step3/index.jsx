@@ -1,7 +1,7 @@
-import React from 'react';
+import { memo } from 'react';
 import './Step3.css';
 
-const Step3 = () => {
+const Step3 = memo(() => {
   return (
     <section className="pay" data-name="Step3">
       <form className="col col-12" data-phase="credit-card">
@@ -44,5 +44,5 @@ const Step3 = () => {
       </form>
     </section>
   );
-};
+});
 export default Step3;

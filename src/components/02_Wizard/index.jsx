@@ -1,11 +1,11 @@
-import React from 'react';
+import { memo } from 'react';
 import './Wizard.css';
 
 type wizardProps = {
   step: Number,
 };
 
-const Wizard: React.FC<wizardProps> = (props) => {
+const Wizard: React.FC<wizardProps> = memo((props) => {
   const { step } = props;
 
   return (
@@ -51,5 +51,5 @@ const Wizard: React.FC<wizardProps> = (props) => {
       </span>
     </section>
   );
-};
+});
 export default Wizard;

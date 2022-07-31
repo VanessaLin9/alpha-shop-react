@@ -1,6 +1,7 @@
-import style from './CartSum.module.css'
+import { memo } from 'react';
+import style from './CartSum.module.css';
 
-const CartSum = (props) => {
+const CartSum = memo((props) => {
   const { sum } = props;
   return (
     <section>
@@ -14,5 +15,5 @@ const CartSum = (props) => {
       </section>
     </section>
   );
-};
+});
 export default CartSum;

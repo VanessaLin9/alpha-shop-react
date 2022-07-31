@@ -1,7 +1,7 @@
-import React from "react";
-import "./Step2.css";
+import { memo } from 'react';
+import './Step2.css';
 
-const Step2 = () => {
+const Step2 = memo(() => {
   return (
     <section className="sent" data-name="Step2">
       <form className="col col-12" data-phase="shipping">
@@ -22,7 +22,7 @@ const Step2 = () => {
               </div>
               <div className="period">約 3~7 個工作天</div>
             </div>
-            <div className="radio-box-border"></div>
+            <div className="radio-box-border" />
           </label>
 
           <label className="radio-group " data-price="500">
@@ -39,11 +39,11 @@ const Step2 = () => {
               </div>
               <div className="period ">48 小時內送達</div>
             </div>
-            <div className="radio-box-border"></div>
+            <div className="radio-box-border" />
           </label>
         </section>
       </form>
     </section>
   );
-};
+});
 export default Step2;

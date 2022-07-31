@@ -1,7 +1,7 @@
-import React from 'react';
+import { memo } from 'react';
 import './ProgressControl.css';
 
-const ProgressControl = () => {
+const ProgressControl = memo(() => {
   return (
     <section data-name="ProgressControl">
       <section className="progress-control-container">
@@ -37,5 +37,5 @@ const ProgressControl = () => {
       </section>
     </section>
   );
-};
+});
 export default ProgressControl;

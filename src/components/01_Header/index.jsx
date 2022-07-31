@@ -1,7 +1,7 @@
-import React from "react";
-import "./Header.css";
+import { memo } from 'react';
+import './Header.css';
 
-const Header = () => {
+const Header = memo(() => {
   return (
     <section data-name="Header">
       <header className="site-header">
@@ -49,19 +49,19 @@ const Header = () => {
             {/* <!-- search --> */}
             <li className="nav-item">
               <a className="nav-icon cursor-point">
-                <i class="fas fa-search"></i>
+                <i className="fas fa-search" />
               </a>
             </li>
             {/* <!-- cart --> */}
             <li className="nav-item">
               <a className="nav-icon cursor-point">
-                <i class="fas fa-shopping-cart"></i>
+                <i className="fas fa-shopping-cart" />
               </a>
             </li>
             <li id="theme-toggle" className="nav-item">
               {/* <!-- moon --> */}
               <a className="nav-icon cursor-point">
-                <i class="fas fa-moon"></i>
+                <i className="fas fa-moon" />
               </a>
               {/* <!-- sun --> */}
               {/* <a className="nav-icon cursor-point">
@@ -80,5 +80,5 @@ const Header = () => {
       </header>
     </section>
   );
-};
+});
 export default Header;

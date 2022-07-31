@@ -1,5 +1,5 @@
-import React from 'react';
-import cx from 'classnames';
+import React, { memo } from 'react';
+// import cx from 'classnames';
 import style from './Cart.module.css';
 
 type CartTypeProps = {
@@ -13,7 +13,7 @@ type CartTypeProps = {
   onIncreaseItem: (id: string) => void,
 };
 
-const CartList: React.FC<CartTypeProps> = (props) => {
+const CartList: React.FC<CartTypeProps> = memo((props) => {
   const {
     id,
     name,
@@ -64,5 +64,5 @@ const CartList: React.FC<CartTypeProps> = (props) => {
       </div>
     </section>
   );
-};
+});
 export default CartList;

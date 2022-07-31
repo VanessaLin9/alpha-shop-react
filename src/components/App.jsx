@@ -17,14 +17,7 @@ type CartType = {
   price: number,
   quantity: number,
 };
-const HeaderMemo = React.memo(Header);
-const WizardMemo = React.memo(Wizard);
-const Step1Memo = React.memo(Step1);
-const Step2Memo = React.memo(Step2);
-const Step3Memo = React.memo(Step3);
-const CartListMemo = React.memo(CartList);
-const CartSumMemo = React.memo(CartSum);
-const FooterMemo = React.memo(Footer);
+
 //
 const App = () => {
   const [step, setStep] = React.useState(0);
@@ -101,21 +94,21 @@ const App = () => {
   let stepContent;
   let nextStep = '下一步';
   if (step === 0) {
-    stepContent = <Step1Memo />;
+    stepContent = <Step1 />;
   } else if (step === 1) {
-    stepContent = <Step2Memo />;
+    stepContent = <Step2 />;
   } else {
     nextStep = '確認下單';
-    stepContent = <Step3Memo />;
+    stepContent = <Step3 />;
   }
 
   return (
     <div className="App">
-      <HeaderMemo />
+      <Header />
       <div className="main-container">
         <div className="register-container col col-lg-6 col-sm-12">
           <h2 className="register-title align-start">結帳</h2>
-          <WizardMemo step={step} />
+          <Wizard step={step} />
           {stepContent}
           {/* <ProgressControl /> */}
           <div className="mimic-btn">
@@ -136,7 +129,7 @@ const App = () => {
             <h3 className="cart-title align-start">購物籃</h3>
             {cart.map((item) => {
               return (
-                <CartListMemo
+                <CartList
                   key={item.id}
                   id={item.id}
                   name={item.name}
@@ -149,11 +142,11 @@ const App = () => {
                 />
               );
             })}
-            <CartSumMemo sum={sum}/>
+            <CartSum sum={sum} />
           </section>
         </div>
       </div>
-      <FooterMemo />
+      <Footer />
     </div>
   );
 };

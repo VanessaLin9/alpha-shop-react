@@ -1,7 +1,7 @@
-import React from "react";
-import "./Step1.css";
+import { memo } from 'react';
+import './Step1.css';
 
-const Step1 = () => {
+const Step1 = memo(() => {
   return (
     <section className="form-container" data-name="Step1">
       <form className="col col-12" data-phase="address">
@@ -102,5 +102,5 @@ const Step1 = () => {
       </form>
     </section>
   );
-};
+});
 export default Step1;
