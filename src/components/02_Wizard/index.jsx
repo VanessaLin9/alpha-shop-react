@@ -1,12 +1,10 @@
 import { memo } from 'react';
+import { useCartContext } from '../cartContext';
+import type { step } from '../type';
 import './Wizard.css';
 
-type wizardProps = {
-  step: Number,
-};
-
-const Wizard: React.FC<wizardProps> = memo((props) => {
-  const { step } = props;
+const Wizard = memo(() => {
+  const { step } = useCartContext();
 
   return (
     <section className="step-container col col-12" data-name="Wizard">

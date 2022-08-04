@@ -6,77 +6,78 @@ import Step1 from './03_Step1';
 import Step2 from './04_Step2';
 import Step3 from './05_Step3';
 // import ProgressControl from './06_ProgressControl';
-import CartList from './07_CartList';
-import CartSum from './07_CartSum';
+import Cart from './07_Cart';
 import Footer from './08_Footer';
+import { CartContext } from './cartContext';
+import type { CartType } from '../type';
 
-type CartType = {
-  id: string,
-  name: string,
-  img: string,
-  price: number,
-  quantity: number,
-};
 
 //
 const App = () => {
   const [step, setStep] = React.useState(0);
-  const [cart, setCart] = React.useState([]);
-  const [sum, setSum] = React.useState(0);
+  const [lineItems, setLineItems] = React.useState([]);
+  const [totalAmount, setTotalAmount] = React.useState(0);
 
   React.useEffect(() => {
     fetch('./initialCart.json')
       .then((res) => res.json())
       .then((data: CartType) => {
-        setCart(data);
-      })
-      .then(() => {
-        const calculate = cart.reduce((pre, curr) => {
-          return pre.price * pre.quantity + curr.price * curr.quantity;
-        });
-
-        setSum(calculate);
+        setLineItems(data);
       })
       .catch((error) => console.log(error));
   }, []);
 
   // Cart 相關相關邏輯
+  // TODO 計算總價
+  React.useEffect(() => {
+    const calculate = lineItems.reduce((pre, curr) => {
+      return pre + curr.price * curr.quantity;
+    }, 0);
+    setTotalAmount(calculate);
+  }, [lineItems]);
+  // TODO 刪除品項
   const atDeleteItem = React.useCallback(
     (id: string) => {
-      const newCart = cart.filter((item: CartType) => item.id !== id);
-      setCart(newCart);
+      const newCart = lineItems.filter((item: CartType) => item.id !== id);
+      setLineItems(newCart);
     },
-    [cart],
+    [lineItems],
   );
+  // TODO 減少品項
   const atReduceItem = React.useCallback(
     (id: string) => {
-      const newCart = cart.map((item: CartType) => {
+      const newCart = lineItems.map((item: CartType) => {
         if (item.id === id) {
-          if (item.quantity <= 1) {
-            alert('確定要刪除嗎?');
-            item.quantity = 0;
-          } else {
-            item.quantity--;
-          }
+          item.quantity--;
         }
         return item;
       });
-      setCart(newCart);
+      setLineItems(newCart);
     },
-    [cart],
+    [lineItems],
   );
+  // TODO 增加品項
   const atIncreaseItem = React.useCallback(
     (id: string) => {
-      const newCart = cart.map((item: CartType) => {
+      const newCart = lineItems.map((item: CartType) => {
         if (item.id === id) {
           item.quantity++;
         }
         return item;
       });
-      setCart(newCart);
+      setLineItems(newCart);
     },
-    [cart],
+    [lineItems],
   );
+  // TODO 蟲洞
+  const provideValue = {
+    step,
+    lineItems,
+    totalAmount,
+    atDeleteItem,
+    atReduceItem,
+    atIncreaseItem,
+  };
 
   // step control
   const goPage = React.useCallback(
@@ -103,51 +104,33 @@ const App = () => {
   }
 
   return (
-    <div className="App">
-      <Header />
-      <div className="main-container">
-        <div className="register-container col col-lg-6 col-sm-12">
-          <h2 className="register-title align-start">結帳</h2>
-          <Wizard step={step} />
-          {stepContent}
-          {/* <ProgressControl /> */}
-          <div className="mimic-btn">
-            {step <= 0 ? (
-              ''
-            ) : (
-              <button className="mimic-pre" onClick={() => goPage(-1)}>
-                上一步
+    <CartContext.Provider value={provideValue}>
+      <div className="App">
+        <Header />
+        <div className="main-container">
+          <div className="register-container col col-lg-6 col-sm-12">
+            <h2 className="register-title align-start">結帳</h2>
+            <Wizard step={step} />
+            {stepContent}
+            {/* <ProgressControl /> */}
+            <div className="mimic-btn">
+              {step <= 0 ? (
+                ''
+              ) : (
+                <button className="mimic-pre" onClick={() => goPage(-1)}>
+                  上一步
+                </button>
+              )}
+              <button className="mimic-nex" onClick={() => goPage(1)}>
+                {nextStep}
               </button>
-            )}
-            <button className="mimic-nex" onClick={() => goPage(1)}>
-              {nextStep}
-            </button>
+            </div>
           </div>
+          <Cart />
         </div>
-        <div className="cart-container col col-lg-5 col-sm-12">
-          <section className="cart m-3" data-name="Cart">
-            <h3 className="cart-title align-start">購物籃</h3>
-            {cart.map((item) => {
-              return (
-                <CartList
-                  key={item.id}
-                  id={item.id}
-                  name={item.name}
-                  img={item.img}
-                  price={item.price}
-                  quantity={item.quantity}
-                  onDeleteItem={atDeleteItem}
-                  onReduceItem={atReduceItem}
-                  onIncreaseItem={atIncreaseItem}
-                />
-              );
-            })}
-            <CartSum sum={sum} />
-          </section>
-        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </CartContext.Provider>
   );
 };
 
