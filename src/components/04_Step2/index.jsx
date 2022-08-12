@@ -1,7 +1,16 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
+import { useCartContext } from '../cartContext';
 import './Step2.css';
 
 const Step2 = memo(() => {
+  const { atDeliverFee } = useCartContext();
+  const [deliver, setDeliver] = useState('0');
+  const atRadioChange = (e) => {
+    const Fee = Number(e.target.value);
+    const deliverFee = { id: e.target.id, fee: Fee };
+    setDeliver(e.target.value);
+    atDeliverFee(deliverFee);
+  };
   return (
     <section className="sent" data-name="Step2">
       <form className="col col-12" data-phase="shipping">
@@ -13,7 +22,9 @@ const Step2 = memo(() => {
               id="shipping-standard"
               type="radio"
               name="shipping"
-              // checked
+              value="0"
+              onChange={atRadioChange}
+              checked={deliver === '0'}
             />
             <div className="radio-info">
               <div className="sending-type">
@@ -31,6 +42,9 @@ const Step2 = memo(() => {
               id="shipping-dhl"
               type="radio"
               name="shipping"
+              value="500"
+              onChange={atRadioChange}
+              checked={deliver === '500'}
             />
             <div className="radio-info">
               <div className="sending-type">

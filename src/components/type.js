@@ -15,3 +15,12 @@ export type btnContext = {
 export type step = {
   step: Number,
 };
+
+export type State = {
+  lineItems: CartType,
+};
+
+export type Action = {
+  type: 'Delete-Item',
+  payload: string,
+};

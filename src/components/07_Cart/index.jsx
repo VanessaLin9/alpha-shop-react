@@ -4,7 +4,9 @@ import { useCartContext } from '../cartContext';
 import LineItem from './LineItem';
 
 const Cart = memo(() => {
-  const { step, lineItems, totalAmount } = useCartContext();
+  const { step, state } = useCartContext();
+  const { lineItems } = state;
+  const deliver = state.deliverFee.id === 'shipping-standard' ? '免費' : '$500';
 
   return (
     <div className="cart-container col col-lg-5 col-sm-12">
@@ -28,11 +30,11 @@ const Cart = memo(() => {
         </section>
         <section className={style.checkout}>
           <div className="text align-start">運費</div>
-          <div className={style.price}>免費</div>
+          <div className={style.price}>{deliver}</div>
         </section>
         <section className={style.checkout}>
           <div className="text align-start">小計</div>
-          <div className={style.price}>${totalAmount}</div>
+          <div className={style.price}>${state.totalAmount}</div>
         </section>
       </section>
     </div>
