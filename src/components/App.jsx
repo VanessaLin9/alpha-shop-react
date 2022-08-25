@@ -73,7 +73,6 @@ function reducer(state, action: Action) {
     case 'Deliver-Fee': {
       const deliverFee = action.payload;
       const { fee } = deliverFee;
-      // console.log('deliverFee', deliverFee.fee);
       return {
         ...state,
         deliverFee,
@@ -88,8 +87,6 @@ function reducer(state, action: Action) {
 //
 const App = () => {
   const [step, setStep] = React.useState(0);
-  // const [lineItems, setLineItems] = React.useState([]);
-  // const [totalAmount, setTotalAmount] = React.useState(0);
   const initialState = {
     lineItems: [],
     totalAmount: 0,

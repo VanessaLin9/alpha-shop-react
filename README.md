@@ -13,11 +13,16 @@ fontawesome v5
 ---
 ## Feture-專案功能
 ---
-- 展示購物車各個component
+- 分成三個步驟完成購物車表單
+- 調整所選商品數量
+- 移除購物車商品
+- 選擇運送的方式，會自動將運費導入
 
 ---
 ## 專案圖片
 ---
-![首頁](https://i.imgur.com/MbmTSjs.jpg)
+![首頁](https://imgur.com/vUQrrC8.jpg)
 
-![首頁](https://imgur.com/TD5Xk8T.jpg)
+![首頁](https://imgur.com/7nFJdiK.jpg)
+
+![首頁](https://imgur.com/lXmbMGI.jpg)
