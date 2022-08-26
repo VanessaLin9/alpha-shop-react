@@ -1,7 +1,7 @@
 .sent {
   margin-top: 60px;
   margin-bottom: 24px;
-  /* border: 1px solid black; */
+  min-height: 300px;
 }
 .form-body {
   display: flex;

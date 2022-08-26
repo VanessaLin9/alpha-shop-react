@@ -1,6 +1,7 @@
 .form-container {
   margin-top: 60px;
   /* border: 1px solid black; */
+  min-height: 325px;
 }
 .form-title {
   font-weight: 700;

@@ -5,7 +5,7 @@ import Wizard from './02_Wizard';
 import Step1 from './03_Step1';
 import Step2 from './04_Step2';
 import Step3 from './05_Step3';
-// import ProgressControl from './06_ProgressControl';
+import ProgressControl from './06_ProgressControl';
 import Cart from './07_Cart';
 import Footer from './08_Footer';
 import { CartContext } from './cartContext';
@@ -141,34 +141,29 @@ const App = () => {
     return {
       step,
       state,
+      setStep,
       atDeleteItem,
       atReduceItem,
       atIncreaseItem,
       atDeliverFee,
     };
-  }, [step, state, atDeleteItem, atReduceItem, atIncreaseItem, atDeliverFee]);
-
-  // step control
-  const goPage = React.useCallback(
-    (page) => {
-      setStep((num) => {
-        if (num + page > 2) {
-          return 2;
-        }
-        return num + page;
-      });
-    },
-    [step],
-  );
+  }, [
+    step,
+    state,
+    setStep,
+    atDeleteItem,
+    atReduceItem,
+    atIncreaseItem,
+    atDeliverFee,
+  ]);
 
   let stepContent;
-  let nextStep = '下一步';
+
   if (step === 0) {
     stepContent = <Step1 />;
   } else if (step === 1) {
     stepContent = <Step2 />;
   } else {
-    nextStep = '確認下單';
     stepContent = <Step3 />;
   }
 
@@ -181,19 +176,7 @@ const App = () => {
             <h2 className="register-title align-start">結帳</h2>
             <Wizard step={step} />
             {stepContent}
-            {/* <ProgressControl /> */}
-            <div className="mimic-btn">
-              {step <= 0 ? (
-                ''
-              ) : (
-                <button className="mimic-pre" onClick={() => goPage(-1)}>
-                  上一步
-                </button>
-              )}
-              <button className="mimic-nex" onClick={() => goPage(1)}>
-                {nextStep}
-              </button>
-            </div>
+            <ProgressControl />
           </div>
           <Cart />
         </div>
