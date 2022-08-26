@@ -9,7 +9,7 @@ import ProgressControl from './06_ProgressControl';
 import Cart from './07_Cart';
 import Footer from './08_Footer';
 import { CartContext } from './cartContext';
-import type { CartType, State, Action } from './type';
+import type { CartType, Action } from '../type';
 
 // TODO 計算總價
 const calculateAmount = (lineItems: CartType, deliverFee: number) => {
