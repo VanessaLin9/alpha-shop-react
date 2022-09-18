@@ -1,4 +1,4 @@
-import '../styles.css';
+import '../css/styles.css';
 import React, { useMemo } from 'react';
 import Header from './01_Header';
 import Wizard from './02_Wizard';

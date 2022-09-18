@@ -1,7 +1,14 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import './Step1.css';
 
 const Step1 = memo(() => {
+  const [customTitle, setCustomTitle] = useState('mr');
+  const [customName, setCustomName] = useState('');
+  const [customTel, setCustomTel] = useState('');
+  const [customMail, setCustomMail] = useState('');
+  const [customCity, setCustomCity] = useState('');
+  const [customAdd, setCustomAdd] = useState('');
+
   return (
     <section className="form-container" data-name="Step1">
       <form className="col col-12" data-phase="address">
@@ -12,10 +19,12 @@ const Step1 = memo(() => {
             <div className="group input-title">
               <div className="input-label">稱謂</div>
               <div className="select-container">
-                <select className="form-select">
-                  <option value="mr" selected>
-                    先生
-                  </option>
+                <select
+                  className="form-select"
+                  value={customTitle}
+                  onChange={(e) => setCustomTitle(e.target.value)}
+                >
+                  <option value="mr">先生</option>
                   <option value="ms">女士</option>
                   <option value="mx">不明</option>
                 </select>
@@ -28,6 +37,8 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="text"
                 placeholder="請輸入姓名"
+                value={customName}
+                onChange={(e) => setCustomName(e.target.value)}
               />
             </div>
           </div>
@@ -39,6 +50,8 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="tel"
                 placeholder="請輸入行動電話"
+                value={customTel}
+                onChange={(e) => setCustomTel(e.target.value)}
               />
             </div>
             <div className="group input-mail">
@@ -47,6 +60,8 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="email"
                 placeholder="請輸入電子郵件"
+                value={customMail}
+                onChange={(e) => setCustomMail(e.target.value)}
               />
             </div>
           </div>
@@ -55,8 +70,15 @@ const Step1 = memo(() => {
             <div className="group input-city">
               <div className="input-label">縣市</div>
               <div className="select-container">
-                <select className="form-select" required>
-                  <option value="">請選擇縣市</option>
+                <select
+                  className="form-select"
+                  value={customCity}
+                  onChange={(e) => setCustomCity(e.target.value)}
+                  required
+                >
+                  <option value="" disabled>
+                    請選擇縣市
+                  </option>
                   <option value="KLU">基隆市</option>
                   <option value="TPH">新北市</option>
                   <option value="TPE">臺北市</option>
@@ -95,6 +117,8 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="text"
                 placeholder="請輸入地址"
+                value={customAdd}
+                onChange={(e) => setCustomAdd(e.target.value)}
               />
             </div>
           </div>
