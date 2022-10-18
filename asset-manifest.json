@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/alpha-shop-react/static/css/main.ccc57ea7.css",
+    "main.js": "/alpha-shop-react/static/js/main.8d89d61d.js",
+    "index.html": "/alpha-shop-react/index.html",
+    "main.ccc57ea7.css.map": "/alpha-shop-react/static/css/main.ccc57ea7.css.map",
+    "main.8d89d61d.js.map": "/alpha-shop-react/static/js/main.8d89d61d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ccc57ea7.css",
+    "static/js/main.8d89d61d.js"
+  ]
+}
