@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import style from './Cart.module.css';
 import { useCartContext } from '../cartContext';
-import type { CartType } from '../type';
+import type { CartType } from '../../type';
 
 const LineItem: React.FC<CartType> = memo((props) => {
   const { id, name, img, price, quantity } = props;
