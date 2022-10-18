@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import InputMask from 'react-input-mask'
+import InputMask from 'react-input-mask';
 import './Step3.css';
 
 const Step3 = memo(() => {

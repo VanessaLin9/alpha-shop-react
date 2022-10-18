@@ -11,7 +11,7 @@ import Footer from './08_Footer';
 import { CartContext } from './cartContext';
 import type { CartType, Action } from '../type';
 
-// TODO 計算總價
+// 計算總價
 const calculateAmount = (lineItems: CartType, deliverFee: number) => {
   const calculate = lineItems.reduce((pre, curr) => {
     return pre + curr.price * curr.quantity;
