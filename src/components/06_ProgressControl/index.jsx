@@ -1,15 +1,13 @@
 import { memo } from 'react';
-// import { useCartContext } from '../cartContext';
-import useCartStore from '../../store/useCartStore';
 import './progressControl.scss';
 
-const ProgressControl = memo(() => {
-  const { step } = useCartStore();
+const ProgressControl = memo((props) => {
+  const { step, onChangeStep } = props;
   let BtnGroup;
 
   const firstBtn = (
     <section className="button-group first" data-phase="address">
-      <button className="next" onClick={() => setStep(1)}>
+      <button className="next" onClick={() => onChangeStep(step + 1)}>
         下一步
         <span className="arrow-line" />
         <span className="arrow-head">{'>'}</span>
@@ -19,12 +17,12 @@ const ProgressControl = memo(() => {
 
   const secondBtn = (
     <section className="button-group" data-phase="shipping">
-      <button className="prev" onClick={() => setStep(0)}>
+      <button className="prev" onClick={() => onChangeStep(step - 1)}>
         <span className="arrow-head">{'<'}</span>
         <span className="arrow-line prev-arrow" />
         上一步
       </button>
-      <button className="next" onClick={() => setStep(2)}>
+      <button className="next" onClick={() => onChangeStep(step + 1)}>
         下一步
         <span className="arrow-line" />
         <span className="arrow-head">{'>'}</span>
@@ -33,7 +31,7 @@ const ProgressControl = memo(() => {
   );
   const thirdBtn = (
     <section className="button-group" data-phase="credit-card">
-      <button className="prev" onClick={() => setStep(1)}>
+      <button className="prev" onClick={() => onChangeStep(step - 1)}>
         <span className="arrow-head">{'<'}</span>
         <span className="arrow-line prev-arrow" />
         上一步

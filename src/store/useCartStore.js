@@ -66,10 +66,10 @@ const reducer = (state: State, action: Action): State => {
       };
     }
     case 'Update-Line-Item-Quantity': {
-      const id = action.payload;
+      const { id, quantity } = action.payload;
       const lineItems = state.lineItems.map((item: CartType) => {
         if (item.id === id) {
-          item.quantity += 1;
+          return { ...item, quantity };
         }
         return item;
       });

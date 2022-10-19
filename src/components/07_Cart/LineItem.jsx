@@ -1,17 +1,17 @@
 import React, { memo } from 'react';
-import { useCartContext } from '../cartContext';
 import type { CartType } from '../../type';
 import './cart.scss';
 
 const LineItem: React.FC<CartType> = memo((props) => {
-  const { id, name, img, price, quantity } = props;
-  const { atDeleteItem, atReduceItem, atIncreaseItem } = useCartContext();
+  const { id, quantity, name, price, img, onQuantityChange, onRemoveItem } =
+    props;
+
   const reduceBtn = (
     <i
       id="downBtn"
       className="fa fa-minus-circle down control-button"
       aria-hidden="true"
-      onClick={() => atReduceItem(id)}
+      onClick={() => onQuantityChange(id, quantity - 1)}
     />
   );
   const removeBtn = (
@@ -19,7 +19,7 @@ const LineItem: React.FC<CartType> = memo((props) => {
       id="downBtn"
       className="fa fa-minus-circle down control-button"
       aria-hidden="true"
-      onClick={() => atDeleteItem(id)}
+      onClick={() => onRemoveItem(id)}
     />
   );
   let minusBtn = reduceBtn;
@@ -43,14 +43,14 @@ const LineItem: React.FC<CartType> = memo((props) => {
                 id="upBtn"
                 className="fa fa-plus-circle up control-button"
                 aria-hidden="true"
-                onClick={() => atIncreaseItem(id)}
+                onClick={() => onQuantityChange(id, quantity + 1)}
               />
             </div>
             <div className="productRemove">
               <button
                 type="button"
                 className="remove btn btn-outline-secondary btn-sm"
-                onClick={() => atDeleteItem(id)}
+                onClick={() => onRemoveItem(id)}
               >
                 remove
               </button>

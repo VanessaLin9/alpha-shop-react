@@ -9,16 +9,13 @@ export const removeItem = (id: string) => ({
   payload: id,
 });
 
-// 減少品項
-// export const atReduceItem = (id: string) => ({
-//   type: 'Decrease-Item',
-//   payload: id,
-// });
-
-// 增加品項
-export const updateLineItemQuantity = (id: string) => ({
+// 增減品項
+export const updateLineItemQuantity = (id: String, quantity: number) => ({
   type: 'Update-Line-Item-Quantity',
-  payload: id,
+  payload: {
+    id,
+    quantity,
+  },
 });
 
 // Deliver Fee
