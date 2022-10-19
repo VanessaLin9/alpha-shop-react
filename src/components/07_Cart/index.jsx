@@ -1,12 +1,14 @@
 import { memo } from 'react';
-import { useCartContext } from '../cartContext';
+// import { useCartContext } from '../cartContext';
+import useCartStore from '../../store/useCartStore';
+import shallow from 'zustand/shallow';
 import LineItem from './LineItem';
 import './cart.scss';
 
 const Cart = memo(() => {
-  const { step, state } = useCartContext();
-  const { lineItems } = state;
-  const deliver = state.deliverFee.id === 'shipping-standard' ? '免費' : '$500';
+  const { step, lineItems, shippingFee, totalPrice } = useCartStore();
+  // const { lineItems } = state;
+  // const deliver = state.deliverFee.id === 'shipping-standard' ? '免費' : '$500';
 
   return (
     <div className="cart-container col col-lg-5 col-sm-12">
@@ -30,11 +32,11 @@ const Cart = memo(() => {
         </section>
         <section className="checkout">
           <div className="text align-start">運費</div>
-          <div className="price">{deliver}</div>
+          <div className="price">{shippingFee}</div>
         </section>
         <section className="checkout">
           <div className="text align-start">小計</div>
-          <div className="price">${state.totalAmount}</div>
+          <div className="price">{totalPrice}</div>
         </section>
       </section>
     </div>

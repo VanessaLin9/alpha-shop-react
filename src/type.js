@@ -24,3 +24,12 @@ export type Action = {
   type: 'Delete-Item',
   payload: string,
 };
+
+export type UserInfo = {
+  title: string,
+  name: string,
+  phone: string,
+  email: string,
+  city: string,
+  address: string,
+}

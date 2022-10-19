@@ -1,9 +1,27 @@
 import create from 'zustand';
-import type { CartType, Action } from '../type';
+import {
+  changeStep,
+  updateLineItemQuantity,
+  removeItem,
+  updateShoppingFee,
+  updateUserInfo,
+} from '../actions/index';
+import type { CartType, Action, UserInfo } from '../type';
+
+export type State = {
+  totalAmount: number,
+  step: number,
+  totalPrice: number,
+  shippingFee: number,
+  lineItems: CartType[],
+  userInfo: UserInfo,
+};
 
 const initialState = {
-  totalAmount: 400,
-  deliverFee: 0,
+  totalAmount: 0,
+  step: 1,
+  totalPrice: 400,
+  shippingFee: 0,
   lineItems: [
     {
       id: '1',
@@ -20,85 +38,110 @@ const initialState = {
       quantity: 1,
     },
   ],
+  useInfor: {
+    total: '先生',
+    name: 'tank',
+    phone: '0919888777',
+    email: 'tank@gmail.com',
+    city: 'TPI',
+    address: '',
+  },
 };
 
-export type State = {
-  totalAmount: number,
-  deliverFee: number,
-  lineItems: CartType[],
+// 計算總價
+const calculateAmount = (lineItems: CartType, deliverFee: number) => {
+  const calculate = lineItems.reduce((pre, curr) => {
+    return pre + curr.price * curr.quantity;
+  }, 0);
+  return calculate + deliverFee;
 };
 
-// reducer 
-// TODO 改寫
-const reducer = (state: State, action: Action) {
-  // switch (action.type) {
-  //   case 'ADD_TO_CART': {
-  //     const lineItems = action.payload;
-  //     const totalAmount = calculateAmount(lineItems, 0);
-  //     return {
-  //       ...state,
-  //       lineItems,
-  //       totalAmount,
-  //     };
-  //   }
-  //   case 'Increase-Item': {
-  //     const id = action.payload;
-  //     const lineItems = state.lineItems.map((item: CartType) => {
-  //       if (item.id === id) {
-  //         item.quantity++;
-  //       }
-  //       return item;
-  //     });
-  //     return {
-  //       ...state,
-  //       lineItems,
-  //       totalAmount: calculateAmount(lineItems, state.deliverFee.fee),
-  //     };
-  //   }
-  //   case 'Decrease-Item': {
-  //     const id = action.payload;
-  //     const lineItems = state.lineItems.map((item: CartType) => {
-  //       if (item.id === id) {
-  //         item.quantity--;
-  //       }
-  //       return item;
-  //     });
-  //     return {
-  //       ...state,
-  //       lineItems,
-  //       totalAmount: calculateAmount(lineItems, state.deliverFee.fee),
-  //     };
-  //   }
-  //   case 'Delete-Item': {
-  //     const id = action.payload;
-  //     const lineItems = state.lineItems.filter(
-  //       (item: CartType) => item.id !== id,
-  //     );
-  //     return {
-  //       ...state,
-  //       lineItems,
-  //       totalAmount: calculateAmount(lineItems, state.deliverFee.fee),
-  //     };
-  //   }
-  //   case 'Deliver-Fee': {
-  //     const deliverFee = action.payload;
-  //     const { fee } = deliverFee;
-  //     return {
-  //       ...state,
-  //       deliverFee,
-  //       totalAmount: calculateAmount(state.lineItems, fee),
-  //     };
-  //   }
-  //   default:
-  //     return state;
-  // }
-}
+// TODO reducer
+const reducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case 'Change-Step': {
+      return {
+        ...state,
+        step: action.payload,
+      };
+    }
+    case 'Update-Line-Item-Quantity': {
+      const id = action.payload;
+      const lineItems = state.lineItems.map((item: CartType) => {
+        if (item.id === id) {
+          item.quantity += 1;
+        }
+        return item;
+      });
+      return {
+        ...state,
+        lineItems,
+        totalAmount: calculateAmount(lineItems, state.shippingFee),
+      };
+    }
+    // case 'Decrease-Item': {
+    //   const id = action.payload;
+    //   const lineItems = state.lineItems.map((item: CartType) => {
+    //     if (item.id === id) {
+    //       item.quantity -= 1;
+    //     }
+    //     return item;
+    //   });
+    //   return {
+    //     ...state,
+    //     lineItems,
+    //     totalAmount: calculateAmount(lineItems, state.deliverFee.fee),
+    //   };
+    // }
+    case 'Delete-Item': {
+      const id = action.payload;
+      const lineItems = state.lineItems.filter(
+        (item: CartType) => item.id !== id,
+      );
+      return {
+        ...state,
+        lineItems,
+        totalAmount: calculateAmount(lineItems, state.shippingFee),
+      };
+    }
+    case 'Deliver-Fee': {
+      const shippingFee = action.payload;
+      return {
+        ...state,
+        shippingFee,
+        totalAmount: calculateAmount(state.lineItems, shippingFee),
+      };
+    }
+    default:
+      return state;
+  }
+};
 
-const useCartStore = create <State>
-  ((set) => {
-    return {
-      ...initialState,
-    };
-  });
+const useCartStore = create((set) => {
+  const dispatch = (action: Action) => {
+    set((state) => {
+      return reducer(state, action);
+    });
+  };
+  return {
+    ...initialState,
+    dispatch,
+    onChangeStep(nextStep: number) {
+      dispatch(changeStep(nextStep));
+    },
+    onUpdateLineItemQuantity(id, quantity) {
+      dispatch(updateLineItemQuantity(id, quantity));
+    },
+    onRemoveItem(id) {
+      dispatch(removeItem(id));
+    },
+    onUpdateShoppingFee(price) {
+      dispatch(updateShoppingFee(price));
+    },
+    onUpdateUserInfo(useInfo) {
+      dispatch(updateUserInfo(useInfo));
+    },
+  };
+});
 
 export default useCartStore;

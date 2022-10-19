@@ -1,9 +1,10 @@
 import { memo } from 'react';
-import { useCartContext } from '../cartContext';
+// import { useCartContext } from '../cartContext';
+import useCartStore from '../../store/useCartStore';
 import './progressControl.scss';
 
 const ProgressControl = memo(() => {
-  const { step, setStep } = useCartContext();
+  const { step } = useCartStore();
   let BtnGroup;
 
   const firstBtn = (
