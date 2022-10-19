@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import './Step1.css';
+import './step1.scss';
 
 const Step1 = memo(() => {
   const [customTitle, setCustomTitle] = useState('mr');

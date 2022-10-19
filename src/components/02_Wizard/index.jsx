@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import { useCartContext } from '../cartContext';
-import type { step } from '../../type';
-import './Wizard.css';
+import './wizard.scss';
 
 const Wizard = memo(() => {
   const { step } = useCartContext();

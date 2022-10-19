@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 import { useCartContext } from '../cartContext';
-import './Step2.css';
+import './step2.scss';
 
 const Step2 = memo(() => {
   const { atDeliverFee } = useCartContext();

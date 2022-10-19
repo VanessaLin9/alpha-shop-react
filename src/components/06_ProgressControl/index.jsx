@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useCartContext } from '../cartContext';
-import './ProgressControl.css';
+import './progressControl.scss';
 
 const ProgressControl = memo(() => {
   const { step, setStep } = useCartContext();

@@ -2,11 +2,8 @@ header.site-header {
   position: sticky;
   z-index: 100;
   top: 0px;
-  /* padding-left: 15px;
-  padding-right: 15px; */
   background-color: inherit;
   text-align: center;
-  /* max-width: 1100px; */
   height: 60px;
 }
 
@@ -18,7 +15,6 @@ nav.navbar-menu {
   justify-content: space-around;
   align-items: center;
   background-color: inherit;
-  /* border: 1px solid red; */
   margin: 0 auto;
 }
 .site-menu-list {
@@ -33,12 +29,6 @@ nav.navbar-menu {
   align-items: center;
   grid-gap: 15px;
 }
-/* .nav-list {
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  background-color: inherit;
-} */
 .nav-item {
   cursor: pointer;
   color: #2a2a2a;
@@ -66,14 +56,4 @@ nav.navbar-menu {
   line-height: 60px;
   color: #2a2a2a;
 }
-/* // navbar-toggle */
-/* input#navbar-toggle {
-  display: none;
-} */
-/* label.burger-container {
-  display: none;
-} */
-/* .icon-toggle {
-  width: 24px;
-  height: 24px;
-} */
+

@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import style from './Cart.module.css';
 import { useCartContext } from '../cartContext';
 import LineItem from './LineItem';
+import './cart.scss';
 
 const Cart = memo(() => {
   const { step, state } = useCartContext();
@@ -24,17 +24,17 @@ const Cart = memo(() => {
             />
           );
         })}
-        <section className={style.checkout}>
+        <section className="checkout">
           <div className="text align-start">step:</div>
-          <div className={style.price}>{step + 1}</div>
+          <div className="price">{step + 1}</div>
         </section>
-        <section className={style.checkout}>
+        <section className="checkout">
           <div className="text align-start">運費</div>
-          <div className={style.price}>{deliver}</div>
+          <div className="price">{deliver}</div>
         </section>
-        <section className={style.checkout}>
+        <section className="checkout">
           <div className="text align-start">小計</div>
-          <div className={style.price}>${state.totalAmount}</div>
+          <div className="price">${state.totalAmount}</div>
         </section>
       </section>
     </div>

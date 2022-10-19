@@ -94,9 +94,7 @@ const reducer = (state: State, action: Action) {
   // }
 }
 
-const useCartStore =
-  create <
-  State >
+const useCartStore = create <State>
   ((set) => {
     return {
       ...initialState,

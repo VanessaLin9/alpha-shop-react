@@ -1,4 +1,3 @@
-import '../css/styles.css';
 import React, { useMemo } from 'react';
 import Header from './01_Header';
 import Wizard from './02_Wizard';
@@ -35,7 +34,7 @@ function reducer(state, action: Action) {
       const id = action.payload;
       const lineItems = state.lineItems.map((item: CartType) => {
         if (item.id === id) {
-          item.quantity++;
+          item.quantity += 1;
         }
         return item;
       });
@@ -49,7 +48,7 @@ function reducer(state, action: Action) {
       const id = action.payload;
       const lineItems = state.lineItems.map((item: CartType) => {
         if (item.id === id) {
-          item.quantity--;
+          item.quantity -= 1;
         }
         return item;
       });
@@ -94,6 +93,7 @@ const App = () => {
   };
 
   const [state, dispatch] = React.useReducer(reducer, initialState);
+  
   // ------------------------
   React.useEffect(() => {
     fetch('./initialCart.json')
@@ -106,21 +106,21 @@ const App = () => {
 
   // Cart 相關相關邏輯
 
-  // TODO 刪除品項
+  // 刪除品項
   const atDeleteItem = React.useCallback(
     (id: string) => {
       dispatch({ type: 'Delete-Item', payload: id });
     },
     [dispatch],
   );
-  // TODO 減少品項
+  // 減少品項
   const atReduceItem = React.useCallback(
     (id: string) => {
       dispatch({ type: 'Decrease-Item', payload: id });
     },
     [dispatch],
   );
-  // TODO 增加品項
+  // 增加品項
   const atIncreaseItem = React.useCallback(
     (id: string) => {
       dispatch({ type: 'Increase-Item', payload: id });
@@ -128,7 +128,7 @@ const App = () => {
     [dispatch],
   );
 
-  // TODO Deliver Fee
+  // Deliver Fee
   const atDeliverFee = React.useCallback(
     (deliverFee) => {
       dispatch({ type: 'Deliver-Fee', payload: deliverFee });
@@ -136,7 +136,7 @@ const App = () => {
     [dispatch],
   );
 
-  // TODO 蟲洞
+  // 蟲洞
   const provideValue = useMemo(() => {
     return {
       step,

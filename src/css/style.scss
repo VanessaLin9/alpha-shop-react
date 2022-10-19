@@ -1,16 +1,17 @@
+$gary: #888;
+%h5 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
 .App {
   font-family: "Noto Sans TC", sans-serif;
-  /* site-edge-margin: 15px; */
 }
 body {
   margin: 0;
   background-color: #ffffff;
-  /* footer-background-color: #f6f7f8;
-  nav-icon: #2a2a2a;
-  social-icon: #808080;
-  main-text: #2a2a2a;
-  secondary-text: #808080;
-  active-color: lightblue; */
+
   font-size: 16px;
   user-select: none;
 }
@@ -51,7 +52,6 @@ h5 {
 }
 .main-container {
   display: flex;
-  /* border: 1px solid black; */
   margin: 80px auto 0 auto;
   width: 85%;
 }
@@ -92,4 +92,54 @@ h2.register-title {
   font-weight: 700;
   font-size: 18px;
   margin-bottom: 34px;
+}
+
+.footer {
+  background: #e5e5e5;
+  h5 { @extend %h5;}
+  .wrap {
+    height: 284px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    font-family: 'Noto Sans TC';
+  };
+  .title {
+    width: 160px;
+    margin: 60px;
+    padding: 2px;
+  };
+  .information {
+    width: 100px;
+    margin: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .linkTo {
+        margin: 4px;
+        font-weight: 400;
+        font-size: 16px;
+        color: $gary;
+      };
+  };
+
+  .fellow {
+    width: 200px;
+    margin: 50px;
+    padding: 2px;
+    p {
+        margin: 4px;
+        font-weight: 400;
+        font-size: 16px;
+        color: $gary;
+      };
+    .socialMidia { 
+      i {
+      margin: 15px;
+      color: $gary;
+      font-size: 24px;
+      cursor: pointer;
+    }}
+  };
+
 }

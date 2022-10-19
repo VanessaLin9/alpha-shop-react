@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
-import style from './Cart.module.css';
 import { useCartContext } from '../cartContext';
 import type { CartType } from '../../type';
+import './cart.scss';
 
 const LineItem: React.FC<CartType> = memo((props) => {
   const { id, name, img, price, quantity } = props;
@@ -29,16 +29,16 @@ const LineItem: React.FC<CartType> = memo((props) => {
   return (
     <section className="product-list" data-total-price="0">
       {/* render card */}
-      <div className={style.item} data-count="0" data-price={price}>
+      <div className="item " data-count="0" data-price={price}>
         <div className="col-md-4">
-          <img className={style.imgContainer} src={img} alt="..." />
+          <img className="imgContainer" src={img} alt="..." />
         </div>
-        <div className={style.productInfo}>
-          <div className={style.productName}>{name}</div>
-          <div className={style.productControlContainer}>
-            <div className={style.productControl}>
+        <div className="productInfo">
+          <div className="productName">{name}</div>
+          <div className="productControlContainer">
+            <div className="productControl">
               {minusBtn}
-              <span className={style.productCount}>{quantity}</span>
+              <span className="productCount">{quantity}</span>
               <i
                 id="upBtn"
                 className="fa fa-plus-circle up control-button"
@@ -46,7 +46,7 @@ const LineItem: React.FC<CartType> = memo((props) => {
                 onClick={() => atIncreaseItem(id)}
               />
             </div>
-            <div className={style.productRemove}>
+            <div className="productRemove">
               <button
                 type="button"
                 className="remove btn btn-outline-secondary btn-sm"
@@ -56,7 +56,7 @@ const LineItem: React.FC<CartType> = memo((props) => {
               </button>
             </div>
           </div>
-          <div className={style.price}>${price}</div>
+          <div className="price">${price}</div>
         </div>
       </div>
     </section>

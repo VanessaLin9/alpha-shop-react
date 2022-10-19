@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 import InputMask from 'react-input-mask';
-import './Step3.css';
+import './step3.scss';
 
 const Step3 = memo(() => {
   const [cardName, setCardName] = useState('');

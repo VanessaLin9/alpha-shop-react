@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import './Footer.css';
+// import './Footer.scss';
 
 const Footer = memo(() => {
   return (
@@ -10,40 +10,40 @@ const Footer = memo(() => {
         </div>
         <div className="information">
           <h5>客戶服務</h5>
-          <a href="/" className="btn">
+          <a href="#home" className="linkTo">
             運送說明
           </a>
-          <a href="/" className="btn">
+          <a href="#home" className="linkTo">
             退換貨相關
           </a>
-          <a href="/" className="btn">
+          <a href="#home" className="linkTo">
             付款資訊
           </a>
-          <a href="/" className="btn">
+          <a href="#home" className="linkTo">
             FAQ
           </a>
         </div>
         <div className="information">
           <h5>關於我們</h5>
-          <a href="/" className="btn">
+          <a href="#home" className="linkTo">
             品牌故事
           </a>
-          <a href="/" className="btn">
+          <a href="#home" className="linkTo">
             媒體連繫
           </a>
-          <a href="/" className="btn">
+          <a href="#home" className="linkTo">
             Press kit
           </a>
         </div>
         <div className="information">
           <h5>資訊</h5>
-          <a href="/" className="btn">
+          <a href="#home" className="linkTo">
             隱私政策
           </a>
-          <a href="/" className="btn">
+          <a href="#home" className="linkTo">
             Cookie
           </a>
-          <a href="/" className="btn">
+          <a href="#home" className="linkTo">
             GDPR
           </a>
         </div>
