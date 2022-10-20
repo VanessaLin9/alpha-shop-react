@@ -1,4 +1,4 @@
-import { useCallback, useRef } from 'react';
+import { useCallback } from 'react';
 import shallow from 'zustand/shallow';
 import useCartStore from '../store/useCartStore';
 import Header from './01_Header';
