@@ -1,10 +1,9 @@
 import { memo } from 'react';
-// import { useCartContext } from '../cartContext';
 import useCartStore from '../../store/useCartStore';
 import './wizard.scss';
 
 const Wizard = memo(() => {
-  const { step } = useCartStore();
+  const { step, onChangeStep } = useCartStore();
 
   return (
     <section className="step-container col col-12" data-name="Wizard">

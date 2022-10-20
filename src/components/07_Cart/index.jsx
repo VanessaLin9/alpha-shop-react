@@ -14,8 +14,6 @@ const Cart = memo(() => {
     onUpdateLineItemQuantity,
     onRemoveItem,
   } = useCartStore();
-  // const { lineItems } = state;
-  // const deliver = state.deliverFee.id === 'shipping-standard' ? '免費' : '$500';
 
   return (
     <div className="cart-container col col-lg-5 col-sm-12">

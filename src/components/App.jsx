@@ -9,7 +9,6 @@ import Step3 from './05_Step3';
 import ProgressControl from './06_ProgressControl';
 import Cart from './07_Cart';
 import Footer from './08_Footer';
-import type { CartType } from '../type';
 
 const App = () => {
   const { step, onChangeStep } = useCartStore((state) => {
@@ -19,13 +18,23 @@ const App = () => {
     };
   }, shallow);
 
+  // TODO 表單驗證
   const atChangeStep = useCallback(
     (nextStep: number) => {
+      // console.log('app handle', nextStep);
       switch (nextStep) {
         case 2: {
+          // console.log('case2', nextStep)
+          onChangeStep(nextStep);
+          break;
+        }
+        case 4: {
+          // console.log('case4', nextStep)
+          onChangeStep(nextStep);
           break;
         }
         default: {
+          console.log('app', nextStep);
           onChangeStep(nextStep);
         }
       }
@@ -33,16 +42,17 @@ const App = () => {
     [onChangeStep],
   );
 
+  // TODO 控制不拔掉會整個壞掉
   let stepContent;
 
-  if (step === 0) {
+  if (step === 1) {
     stepContent = <Step1 />;
-  } else if (step === 1) {
+  } else if (step === 2) {
     stepContent = <Step2 />;
-  } else if (step === 3) {
+  } else {
     stepContent = <Step3 />;
   }
-
+ 
   return (
     <div className="App">
       <Header />
@@ -50,7 +60,7 @@ const App = () => {
         <div className="register-container col col-lg-6 col-sm-12">
           <h2 className="register-title align-start">結帳</h2>
           <Wizard step={step} />
-          <Step3 />
+          <div>{stepContent}</div>
           <ProgressControl step={step} onChangeStep={atChangeStep} />
         </div>
         <Cart />

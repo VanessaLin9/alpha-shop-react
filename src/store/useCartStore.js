@@ -59,7 +59,7 @@ const calculateAmount = (lineItems: CartType, deliverFee: number) => {
 // TODO reducer
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'Change-Step': {
+    case 'CHANGE_STEP': {
       return {
         ...state,
         step: action.payload,
@@ -79,20 +79,6 @@ const reducer = (state: State, action: Action): State => {
         totalAmount: calculateAmount(lineItems, state.shippingFee),
       };
     }
-    // case 'Decrease-Item': {
-    //   const id = action.payload;
-    //   const lineItems = state.lineItems.map((item: CartType) => {
-    //     if (item.id === id) {
-    //       item.quantity -= 1;
-    //     }
-    //     return item;
-    //   });
-    //   return {
-    //     ...state,
-    //     lineItems,
-    //     totalAmount: calculateAmount(lineItems, state.deliverFee.fee),
-    //   };
-    // }
     case 'Delete-Item': {
       const id = action.payload;
       const lineItems = state.lineItems.filter(
@@ -127,6 +113,7 @@ const useCartStore = create((set) => {
     ...initialState,
     dispatch,
     onChangeStep(nextStep: number) {
+      console.log('onChangeStep', nextStep)
       dispatch(changeStep(nextStep));
     },
     onUpdateLineItemQuantity(id, quantity) {

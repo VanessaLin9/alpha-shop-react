@@ -1,9 +1,10 @@
 import { memo, useState } from 'react';
-import { useCartContext } from '../cartContext';
+import useCartStore from '../../store/useCartStore';
 import './step2.scss';
 
+// TODO 運費邏輯
 const Step2 = memo(() => {
-  const { atDeliverFee } = useCartContext();
+  const { atDeliverFee } = useCartStore();
   const [deliver, setDeliver] = useState('0');
   const atRadioChange = (e) => {
     const Fee = Number(e.target.value);

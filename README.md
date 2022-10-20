@@ -1,17 +1,24 @@
 # alpha-shop-react
-Created with CodeSandbox
 
-## 歡迎至 [CodeSandbox](https://codesandbox.io/s/peaceful-dream-klv038) 使用觀看 
+
+## 刻意練習:
+```
+1. 從0建構整個購物車
+2. 使用 useReducer + useContext 管理邏輯
+3. 由 useReducer + useContext 模式重構，改使用zustand 集中邏輯管理
+```
 ---
 
 ## 本專案使用: 
 ```
-react
-bootstrap5
+react v18
 fontawesome v5
+zustand
+eslint
+prettier
 ```
 ---
-## Feture-專案功能
+## 專案功能
 ---
 - 分成三個步驟完成購物車表單
 - 調整所選商品數量
