@@ -1,5 +1,4 @@
 import { memo } from 'react';
-// import { useCartContext } from '../cartContext';
 import shallow from 'zustand/shallow';
 import useCartStore from '../../store/useCartStore';
 import LineItem from './LineItem';

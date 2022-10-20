@@ -4,13 +4,12 @@ import './step2.scss';
 
 // TODO 運費邏輯
 const Step2 = memo(() => {
-  const { atDeliverFee } = useCartStore();
+  const { onUpdateShoppingFee } = useCartStore();
   const [deliver, setDeliver] = useState('0');
   const atRadioChange = (e) => {
     const Fee = Number(e.target.value);
-    const deliverFee = { id: e.target.id, fee: Fee };
     setDeliver(e.target.value);
-    atDeliverFee(deliverFee);
+    onUpdateShoppingFee(Fee);
   };
   return (
     <section className="sent" data-name="Step2">

@@ -4,8 +4,8 @@
 ## 刻意練習:
 ```
 1. 從0建構整個購物車
-2. 使用 useReducer + useContext 管理邏輯
-3. 由 useReducer + useContext 模式重構，改使用zustand 集中邏輯管理
+2. 練習使用 useReducer + useContext 管理邏輯
+3. 再由 useReducer + useContext 模式重構，改使用zustand 集中邏輯管理
 ```
 ---
 

@@ -42,7 +42,6 @@ const App = () => {
     [onChangeStep],
   );
 
-  // TODO 控制不拔掉會整個壞掉
   let stepContent;
 
   if (step === 1) {
@@ -52,7 +51,7 @@ const App = () => {
   } else {
     stepContent = <Step3 />;
   }
- 
+
   return (
     <div className="App">
       <Header />

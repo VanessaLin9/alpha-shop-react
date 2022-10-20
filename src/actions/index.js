@@ -1,5 +1,5 @@
 export const changeStep = (step: number) => ({
-  type: 'CHANGE_STEP',
+  type: 'Change-Step',
   payload: step,
 });
 
@@ -19,9 +19,9 @@ export const updateLineItemQuantity = (id: String, quantity: number) => ({
 });
 
 // Deliver Fee
-export const updateShoppingFee = (deliverFee) => ({
+export const updateShoppingFee = (shippingFee) => ({
   type: 'Deliver-Fee',
-  payload: deliverFee,
+  payload: shippingFee,
 });
 
 // 購買人資料更新

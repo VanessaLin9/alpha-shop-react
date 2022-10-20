@@ -49,17 +49,17 @@ const initialState = {
 };
 
 // 計算總價
-const calculateAmount = (lineItems: CartType, deliverFee: number) => {
+const calculateAmount = (lineItems: CartType, shippingFee: number) => {
   const calculate = lineItems.reduce((pre, curr) => {
     return pre + curr.price * curr.quantity;
   }, 0);
-  return calculate + deliverFee;
+  return calculate + shippingFee;
 };
 
 // TODO reducer
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'CHANGE_STEP': {
+    case 'Change-Step': {
       return {
         ...state,
         step: action.payload,
@@ -76,7 +76,7 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         lineItems,
-        totalAmount: calculateAmount(lineItems, state.shippingFee),
+        totalPrice: calculateAmount(lineItems, state.shippingFee),
       };
     }
     case 'Delete-Item': {
@@ -87,7 +87,7 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         lineItems,
-        totalAmount: calculateAmount(lineItems, state.shippingFee),
+        totalPrice: calculateAmount(lineItems, state.shippingFee),
       };
     }
     case 'Deliver-Fee': {
@@ -95,7 +95,7 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         shippingFee,
-        totalAmount: calculateAmount(state.lineItems, shippingFee),
+        totalPrice: calculateAmount(state.lineItems, shippingFee),
       };
     }
     default:
@@ -113,7 +113,6 @@ const useCartStore = create((set) => {
     ...initialState,
     dispatch,
     onChangeStep(nextStep: number) {
-      console.log('onChangeStep', nextStep)
       dispatch(changeStep(nextStep));
     },
     onUpdateLineItemQuantity(id, quantity) {

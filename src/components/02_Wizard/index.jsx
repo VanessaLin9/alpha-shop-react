@@ -3,7 +3,7 @@ import useCartStore from '../../store/useCartStore';
 import './wizard.scss';
 
 const Wizard = memo(() => {
-  const { step, onChangeStep } = useCartStore();
+  const { step } = useCartStore();
 
   return (
     <section className="step-container col col-12" data-name="Wizard">
