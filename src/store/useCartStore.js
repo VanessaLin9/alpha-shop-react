@@ -1,12 +1,13 @@
 import create from 'zustand';
 import {
+  Action,
   changeStep,
   updateLineItemQuantity,
   removeItem,
   updateShoppingFee,
   updateUserInfo,
 } from '../actions/index';
-import type { CartType, Action, UserInfo } from '../type';
+import type { CartType, UserInfo } from '../type';
 
 export type State = {
   totalAmount: number,
@@ -15,6 +16,12 @@ export type State = {
   shippingFee: number,
   lineItems: CartType[],
   userInfo: UserInfo,
+  // action
+  onChangeStep: (nextStep: number) => void,
+  onUpdateLineItemQuantity: (id: string, quantity: number) => void,
+  onRemoveItem: (id: string) => void,
+  onUpdateShoppingFee: (price: number) => void,
+  onUpdateUserInfo: (useInfo: UserInfo) => void,
 };
 
 const initialState = {
@@ -115,16 +122,16 @@ const useCartStore = create((set) => {
     onChangeStep(nextStep: number) {
       dispatch(changeStep(nextStep));
     },
-    onUpdateLineItemQuantity(id, quantity) {
+    onUpdateLineItemQuantity(id: string, quantity: number) {
       dispatch(updateLineItemQuantity(id, quantity));
     },
-    onRemoveItem(id) {
+    onRemoveItem(id: string) {
       dispatch(removeItem(id));
     },
-    onUpdateShoppingFee(price) {
+    onUpdateShoppingFee(price: number) {
       dispatch(updateShoppingFee(price));
     },
-    onUpdateUserInfo(useInfo) {
+    onUpdateUserInfo(useInfo: UserInfo) {
       dispatch(updateUserInfo(useInfo));
     },
   };

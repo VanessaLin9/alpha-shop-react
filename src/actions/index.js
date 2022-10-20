@@ -29,3 +29,12 @@ export const updateUserInfo = (userInfo) => ({
   type: 'Update-User-Info',
   payload: userInfo,
 });
+
+export type Action =
+  | { type: 'Change-Step', payload: number }
+  | {
+      type: 'Update-Line-Item-Quantity',
+      payload: { id: string, quantity: number },
+    }
+  | { type: 'Delete-Item', payload: string }
+  | { type: 'Deliver-Fee', payload: number };

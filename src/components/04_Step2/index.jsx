@@ -1,10 +1,14 @@
 import { memo, useState } from 'react';
+import shallow from 'zustand/shallow';
 import useCartStore from '../../store/useCartStore';
 import './step2.scss';
 
-// TODO 運費邏輯
 const Step2 = memo(() => {
-  const { onUpdateShoppingFee } = useCartStore();
+  const { onUpdateShoppingFee } = useCartStore((state) => {
+    return {
+      onUpdateShoppingFee: state.onUpdateShoppingFee,
+    };
+  }, shallow);
   const [deliver, setDeliver] = useState('0');
   const atRadioChange = (e) => {
     const Fee = Number(e.target.value);

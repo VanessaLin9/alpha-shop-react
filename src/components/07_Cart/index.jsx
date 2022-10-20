@@ -12,7 +12,16 @@ const Cart = memo(() => {
     shippingFee,
     onUpdateLineItemQuantity,
     onRemoveItem,
-  } = useCartStore();
+  } = useCartStore((state) => {
+    return {
+      step: state.step,
+      lineItems: state.lineItems,
+      totalPrice: state.totalPrice,
+      shippingFee: state.shippingFee,
+      onUpdateLineItemQuantity: state.onUpdateLineItemQuantity,
+      onRemoveItem: state.onRemoveItem,
+    };
+  }, shallow);
 
   return (
     <div className="cart-container col col-lg-5 col-sm-12">
@@ -32,7 +41,7 @@ const Cart = memo(() => {
         ))}
         <section className="checkout">
           <div className="text align-start">step:</div>
-          <div className="price">{step}</div>
+          <div className="price">{step === 4 ? '送出訂單' : step}</div>
         </section>
         <section className="checkout">
           <div className="text align-start">運費</div>

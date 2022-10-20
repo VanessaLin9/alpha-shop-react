@@ -1,5 +1,4 @@
 import { memo } from 'react';
-// import './Footer.scss';
 
 const Footer = memo(() => {
   return (

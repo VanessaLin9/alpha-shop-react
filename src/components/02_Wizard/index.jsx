@@ -1,9 +1,14 @@
 import { memo } from 'react';
+import shallow from 'zustand/shallow';
 import useCartStore from '../../store/useCartStore';
 import './wizard.scss';
 
 const Wizard = memo(() => {
-  const { step } = useCartStore();
+  const { step } = useCartStore((state) => {
+    return {
+      step: state.step,
+    };
+  }, shallow);
 
   return (
     <section className="step-container col col-12" data-name="Wizard">
