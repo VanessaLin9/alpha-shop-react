@@ -1,12 +1,11 @@
 import { memo } from 'react';
-import './header.scss';
 
 const Header = memo(() => {
   return (
     <section data-name="Header">
-      <header className="site-header">
-        <nav className="navbar-menu">
-          <ul className="nav-list site-menu-list mr-auto">
+      <header className="header">
+        <nav className="nav-menu">
+          <ul className="nav-list">
             <li className="nav-item">
               <a className="nav-link" href="#boys">
                 男款
@@ -34,7 +33,7 @@ const Header = memo(() => {
             </li>
           </ul>
 
-          <ul className="nav-list site-action-list">
+          <ul className="nav-list">
             {/* <!-- search --> */}
             <li className="nav-item">
               <a href="#search">
@@ -54,9 +53,9 @@ const Header = memo(() => {
             </li>
           </ul>
         </nav>
-        <a className="header-logo-container" href="#logo">
-          <img src="" alt="" className="icon-logo  cursor-point" />
-          <h4 className="logo-title">ALPHA shop</h4>
+        <a className="header-logo" href="#logo">
+          <div className="header-logo-icon" />
+          <div className="header-logo-title" />
         </a>
       </header>
     </section>

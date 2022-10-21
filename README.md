@@ -1,11 +1,12 @@
 # alpha-shop-react
-
+[](https://main.dbfkjg1s1o2x7.amplifyapp.com/)
 
 ## 刻意練習:
 ```
 1. 從0建構整個購物車
 2. 練習使用 useReducer + useContext 管理邏輯
 3. 再由 useReducer + useContext 模式重構，改使用zustand 集中邏輯管理
+4. 佈署致AWS Amplifyapp
 ```
 ---
 

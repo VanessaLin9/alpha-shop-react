@@ -1,3 +1,6 @@
+@use 'reset';
+
+
 $gary: #888;
 %h5 {
   font-weight: 700;
@@ -8,47 +11,16 @@ $gary: #888;
 .App {
   font-family: "Noto Sans TC", sans-serif;
 }
+
 body {
   margin: 0;
   background-color: #ffffff;
-
   font-size: 16px;
   user-select: none;
 }
+
 .container {
   margin: 0px 15px;
-}
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-.mr-auto {
-  margin-right: auto !important;
-}
-
-ul,
-ol,
-li {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-}
-a {
-  text-decoration: none;
-}
-i {
-  color: #2a2a2a;
-}
-p {
-  margin: 0;
-}
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin: 0;
-  line-height: 0.9;
 }
 .main-container {
   display: flex;
@@ -93,6 +65,54 @@ h2.register-title {
   font-size: 18px;
   margin-bottom: 34px;
 }
+// TODO 整理
+
+header.header {
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  width: 100%;
+  background-color: #fff;
+  height: 60px;
+  nav.nav-menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: inherit;
+    padding: 0 10%;
+    .nav-list {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      grid-gap: 16px;
+      .nav-item {
+        cursor: pointer;
+      };
+    };
+  };
+  .header-logo {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 60px;
+    width: 200px;
+    .header-logo-icon {
+      background: url('../assets/Logo.svg');
+      background-size: 100% 100%;
+      width: 100%;
+      height: 100%;
+    };
+    .header-logo-title {
+      background: url('../assets/ALPHA\ Shop.svg');
+      background-size: 100% 100%;
+      width: 100%;
+      height: 100%;
+    };
+  };
+};
 
 .footer {
   background: #e5e5e5;
@@ -142,4 +162,8 @@ h2.register-title {
     }}
   };
 
+}
+/********* 電腦版樣式 *********/
+@media screen and (min-width: 375px) {
+  
 }
