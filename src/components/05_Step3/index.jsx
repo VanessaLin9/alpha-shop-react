@@ -1,6 +1,5 @@
 import { memo, useState } from 'react';
 import InputMask from 'react-input-mask';
-import './step3.scss';
 
 const Step3 = memo(() => {
   const [cardName, setCardName] = useState('');
@@ -9,8 +8,8 @@ const Step3 = memo(() => {
   const [cvcCode, setCvcCode] = useState('');
 
   return (
-    <section className="pay" data-name="Step3">
-      <form className="col col-12" data-phase="credit-card">
+    <section className="step2-form-container" data-name="Step3">
+      <form data-phase="credit-card">
         <h3 className="form-title">付款資訊</h3>
 
         <section className="form-body">
@@ -41,7 +40,7 @@ const Step3 = memo(() => {
             </div>
           </div>
 
-          <div className="form-row">
+          <div className="form-row group-input">
             <div className="group">
               <div className="input-label">有效期限</div>
               <InputMask
@@ -53,6 +52,7 @@ const Step3 = memo(() => {
                 onChange={(e) => setValidDay(e.target.value)}
               />
             </div>
+            {/* TODO mask */}
             <div className="group">
               <div className="input-label">CVC / CCV</div>
               <input

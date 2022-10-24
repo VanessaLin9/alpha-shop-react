@@ -1,5 +1,4 @@
 import { memo, useState } from 'react';
-import './step1.scss';
 
 const Step1 = memo(() => {
   const [customTitle, setCustomTitle] = useState('mr');
@@ -10,8 +9,8 @@ const Step1 = memo(() => {
   const [customAdd, setCustomAdd] = useState('');
 
   return (
-    <section className="form-container" data-name="Step1">
-      <form className="col col-12" data-phase="address">
+    <section className="step1-form-container" data-name="Step1">
+      <form data-phase="address">
         <h3 className="form-title">寄送地址</h3>
         <section className="form-body ">
           {/* len 1 */}

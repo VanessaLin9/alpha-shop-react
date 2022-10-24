@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import shallow from 'zustand/shallow';
 import useCartStore from '../../store/useCartStore';
-import './wizard.scss';
 
 const Wizard = memo(() => {
   const { step } = useCartStore((state) => {
@@ -11,7 +10,7 @@ const Wizard = memo(() => {
   }, shallow);
 
   return (
-    <section className="step-container col col-12" data-name="Wizard">
+    <section className="step-container" data-name="Wizard">
       {/* step1 */}
       <span className="step-group" data-phase="address">
         <span className="step-icon" data-order={step >= 1}>

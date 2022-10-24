@@ -1,7 +1,6 @@
 import { memo, useState } from 'react';
 import shallow from 'zustand/shallow';
 import useCartStore from '../../store/useCartStore';
-import './step2.scss';
 
 const Step2 = memo(() => {
   const { onUpdateShoppingFee } = useCartStore((state) => {
@@ -16,8 +15,8 @@ const Step2 = memo(() => {
     onUpdateShoppingFee(Fee);
   };
   return (
-    <section className="sent" data-name="Step2">
-      <form className="col col-12" data-phase="shipping">
+    <section className="step2-form-container" data-name="Step2">
+      <form data-phase="shipping">
         <h3 className="form-title">運送方式</h3>
         <section className="form-body">
           <label className="radio-group" data-price="0">
