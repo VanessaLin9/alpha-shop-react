@@ -1,5 +1,4 @@
 import React from 'react';
-import './progressControl.scss';
 
 type ProgressControlProps = {
   step: number,

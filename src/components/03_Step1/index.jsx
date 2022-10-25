@@ -1,12 +1,41 @@
 import { memo, useState } from 'react';
+import { emailValidate, phoneValidate } from '../../utilize/validate';
 
 const Step1 = memo(() => {
-  const [customTitle, setCustomTitle] = useState('mr');
-  const [customName, setCustomName] = useState('');
-  const [customTel, setCustomTel] = useState('');
-  const [customMail, setCustomMail] = useState('');
-  const [customCity, setCustomCity] = useState('');
-  const [customAdd, setCustomAdd] = useState('');
+  const [state, setState] = useState({
+    title: 'mr',
+    name: '',
+    tel: '',
+    mail: '',
+    city: '',
+    address: '',
+  });
+
+  function atChange(e) {
+    const { value, name } = e.target;
+
+    // TODO 表單驗證
+    // switch (name) {
+    //   case 'mail': {
+    //     emailValidate.test()
+    //     break;
+    //   }
+    //   case 'tel': {
+    //     phoneValidate.test()
+    //     break;
+    //   }
+    //   default: {
+    //     break;
+    //   }
+    // };
+
+    setState((pre) => {
+      return {
+        ...pre,
+        [name]: value,
+      };
+    });
+  }
 
   return (
     <section className="step1-form-container" data-name="Step1">
@@ -20,8 +49,9 @@ const Step1 = memo(() => {
               <div className="select-container">
                 <select
                   className="form-select"
-                  value={customTitle}
-                  onChange={(e) => setCustomTitle(e.target.value)}
+                  name="title"
+                  value={state.title}
+                  onChange={atChange}
                 >
                   <option value="mr">先生</option>
                   <option value="ms">女士</option>
@@ -36,8 +66,9 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="text"
                 placeholder="請輸入姓名"
-                value={customName}
-                onChange={(e) => setCustomName(e.target.value)}
+                name="name"
+                value={state.name}
+                onChange={atChange}
               />
             </div>
           </div>
@@ -49,8 +80,9 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="tel"
                 placeholder="請輸入行動電話"
-                value={customTel}
-                onChange={(e) => setCustomTel(e.target.value)}
+                name="tel"
+                value={state.tel}
+                onChange={atChange}
               />
             </div>
             <div className="group input-mail">
@@ -59,8 +91,9 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="email"
                 placeholder="請輸入電子郵件"
-                value={customMail}
-                onChange={(e) => setCustomMail(e.target.value)}
+                name="mail"
+                value={state.mail}
+                onChange={atChange}
               />
             </div>
           </div>
@@ -71,8 +104,9 @@ const Step1 = memo(() => {
               <div className="select-container">
                 <select
                   className="form-select"
-                  value={customCity}
-                  onChange={(e) => setCustomCity(e.target.value)}
+                  name="city"
+                  value={state.city}
+                  onChange={atChange}
                   required
                 >
                   <option value="" disabled>
@@ -116,8 +150,9 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="text"
                 placeholder="請輸入地址"
-                value={customAdd}
-                onChange={(e) => setCustomAdd(e.target.value)}
+                name="address"
+                value={state.address}
+                onChange={atChange}
               />
             </div>
           </div>

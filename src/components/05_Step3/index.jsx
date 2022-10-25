@@ -2,10 +2,22 @@ import { memo, useState } from 'react';
 import InputMask from 'react-input-mask';
 
 const Step3 = memo(() => {
-  const [cardName, setCardName] = useState('');
-  const [cardNumber, setCardNumber] = useState('');
-  const [validDay, setValidDay] = useState('');
-  const [cvcCode, setCvcCode] = useState('');
+  const [state, setState] = useState({
+    cardName: '',
+    cardNumber: '',
+    validDay: '',
+    cvcCode: '',
+  });
+
+  function atChange(e) {
+    const { name, value } = e.target;
+    setState((pre) => {
+      return {
+        ...pre,
+        [name]: value,
+      };
+    });
+  }
 
   return (
     <section className="step2-form-container" data-name="Step3">
@@ -20,8 +32,9 @@ const Step3 = memo(() => {
                 className="form-control"
                 type="text"
                 placeholder="John Doe"
-                value={cardName}
-                onChange={(e) => setCardName(e.target.value)}
+                name="cardName"
+                value={state.cardName}
+                onChange={atChange}
               />
             </div>
           </div>
@@ -34,8 +47,9 @@ const Step3 = memo(() => {
                 type="text"
                 placeholder="1111 2222 3333 4444"
                 mask="9999 9999 9999 9999"
-                value={cardNumber}
-                onChange={(e) => setCardNumber(e.target.value)}
+                name="cardNumber"
+                value={state.cardNumber}
+                onChange={(e) => atChange(e)}
               />
             </div>
           </div>
@@ -48,20 +62,22 @@ const Step3 = memo(() => {
                 type="text"
                 placeholder="MM/YY"
                 mask="99/99"
-                value={validDay}
-                onChange={(e) => setValidDay(e.target.value)}
+                name="validDay"
+                value={state.validDay}
+                onChange={(e) => atChange(e)}
               />
             </div>
-            {/* TODO mask */}
+
             <div className="group">
               <div className="input-label">CVC / CCV</div>
-              <input
+              <InputMask
                 className="form-control"
                 type="text"
                 placeholder="123"
-                maxLength={3}
-                value={cvcCode}
-                onChange={(e) => setCvcCode(e.target.value)}
+                mask="999"
+                name="cvcCode"
+                value={state.cvcCode}
+                onChange={(e) => atChange(e)}
               />
             </div>
           </div>
