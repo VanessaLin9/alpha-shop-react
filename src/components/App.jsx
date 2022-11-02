@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import shallow from 'zustand/shallow';
 import useCartStore from '../store/useCartStore';
 import Header from './01_Header';
@@ -11,6 +11,7 @@ import Cart from './07_Cart';
 import Footer from './08_Footer';
 
 const App = () => {
+  const [dark, setDark] = useState('light');
   const { step, onChangeStep } = useCartStore((state) => {
     return {
       step: state.step,
@@ -53,11 +54,11 @@ const App = () => {
   }
 
   return (
-    <div className="App">
-      <Header />
+    <div className="App" data-theme={dark}>
+      <Header handleTheme={setDark} />
       <div className="main-container">
-        <div className="register-container col col-lg-6 col-sm-12">
-          <h2 className="register-title align-start">結帳</h2>
+        <h2 className="main-title">結帳</h2>
+        <div className="register-container">
           <Wizard step={step} />
           <div>{stepContent}</div>
           <ProgressControl step={step} onChangeStep={atChangeStep} />

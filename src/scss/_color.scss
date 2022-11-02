@@ -1,0 +1,21 @@
+html {
+  --gary: #888;
+  --white: #fff;
+  --logo: url('../assets/Logo-light.svg');
+  --text: #2A2A2A;
+  --border: #afb1bd;
+  --label: #808080;
+  --inputBorder: #4A4A4A;
+  --period: #000;
+
+}
+
+html [data-theme="dark"] {
+  --white: #121212;
+  --logo: url('../assets/Logo.svg');
+  --text: #fff;
+  --border: #fff;
+  --label: #5e5e5e;
+  --inputBorder: #5e5e5e;
+  --period: #5e5e5e;
+}

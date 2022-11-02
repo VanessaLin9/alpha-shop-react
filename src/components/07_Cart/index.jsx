@@ -2,7 +2,7 @@ import { memo } from 'react';
 import shallow from 'zustand/shallow';
 import useCartStore from '../../store/useCartStore';
 import LineItem from './LineItem';
-import './cart.scss';
+
 
 const Cart = memo(() => {
   const {
@@ -24,35 +24,33 @@ const Cart = memo(() => {
   }, shallow);
 
   return (
-    <div className="cart-container col col-lg-5 col-sm-12">
-      <section className="cart m-3" data-name="Cart">
-        <h3 className="cart-title align-start">購物籃</h3>
-        {lineItems.map((lineItem) => (
-          <LineItem
-            id={lineItem.id}
-            quantity={lineItem.quantity}
-            name={lineItem.name}
-            price={lineItem.price}
-            img={lineItem.img}
-            key={lineItem.id}
-            onQuantityChange={onUpdateLineItemQuantity}
-            onRemoveItem={onRemoveItem}
-          />
-        ))}
-        <section className="checkout">
-          <div className="text align-start">step:</div>
-          <div className="price">{step === 4 ? '送出訂單' : step}</div>
-        </section>
-        <section className="checkout">
-          <div className="text align-start">運費</div>
-          <div className="price">{shippingFee}</div>
-        </section>
-        <section className="checkout">
-          <div className="text align-start">小計</div>
-          <div className="price">{totalPrice}</div>
-        </section>
+    <section className="cart-container" data-name="Cart">
+      <h3 className="cart-title">購物籃</h3>
+      {lineItems.map((lineItem) => (
+        <LineItem
+          id={lineItem.id}
+          quantity={lineItem.quantity}
+          name={lineItem.name}
+          price={lineItem.price}
+          img={lineItem.img}
+          key={lineItem.id}
+          onQuantityChange={onUpdateLineItemQuantity}
+          onRemoveItem={onRemoveItem}
+        />
+      ))}
+      <section className="checkout">
+        <div className="text">step:</div>
+        <div className="product-price">{step === 4 ? '送出訂單' : step}</div>
       </section>
-    </div>
+      <section className="checkout">
+        <div className="text">運費</div>
+        <div className="product-price">{shippingFee}</div>
+      </section>
+      <section className="checkout">
+        <div className="text">小計</div>
+        <div className="product-price">{totalPrice}</div>
+      </section>
+    </section>
   );
 });
 export default Cart;

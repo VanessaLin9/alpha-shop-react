@@ -15,7 +15,7 @@ const Wizard = memo(() => {
       <span className="step-group" data-phase="address">
         <span className="step-icon" data-order={step >= 1}>
           {step >= 1 ? (
-            <span className="text">✔</span>
+            <span className="finished">✔</span>
           ) : (
             <span className="text">1</span>
           )}
@@ -30,7 +30,7 @@ const Wizard = memo(() => {
       <span className="step-group" data-phase="shipping">
         <span className="step-icon" data-order={step >= 2}>
           {step >= 2 ? (
-            <span className="text">✔</span>
+            <span className="finished">✔</span>
           ) : (
             <span className="text">2</span>
           )}

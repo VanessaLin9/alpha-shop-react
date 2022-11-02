@@ -1,7 +1,6 @@
 @use 'reset';
+@use 'color';
 
-
-$gary: #888;
 %h5 {
   font-weight: 700;
   font-size: 20px;
@@ -10,62 +9,31 @@ $gary: #888;
 
 .App {
   font-family: "Noto Sans TC", sans-serif;
-}
-
-body {
   margin: 0;
-  background-color: #ffffff;
-  font-size: 16px;
+  background-color: var(--white);
+  color: var(--text);
   user-select: none;
 }
 
 .container {
   margin: 0px 15px;
 }
+
+// main
 .main-container {
-  display: flex;
-  margin: 80px auto 0 auto;
-  width: 85%;
+  display: grid;
+  grid-template-columns: 6fr 1fr 5fr;
+  margin: 60px auto 0 auto;
+  min-width: 768px;
+  padding: 5% 10%;
+  .main-title {
+    width: 100%;
+  };
+  .register-container {
+    grid-column: 1/2;
+    width: 100%;
+  }
 }
-h2.register-title {
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 38px;
-  color: #2a2a2a;
-  margin-bottom: 48px;
-}
-.align-start {
-  text-align: start;
-}
-.cart-container {
-  margin-top: 80px;
-  margin-left: 80px;
-}
-.mimic-btn {
-  position:relative;
-  display:flex;
-  justify-content: space-between;
-  margin: 5px;
-}
-.mimic-nex {
-  position:absolute;
-  right: 0;
-  background-color: palevioletred;
-  padding: 3px;
-  border: 2px solid palevioletred;
-  border-radius: 5px;
-}
-.cart {
-  border: 1px solid #f0f0f5;
-  border-radius: 8px;
-  padding: 24px;
-}
-.cart-title {
-  font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 34px;
-}
-// TODO 整理
 
 // Header
 header.header {
@@ -73,16 +41,18 @@ header.header {
   z-index: 100;
   top: 0px;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--white);
   height: 60px;
+  padding: 0 10%;
+  color: var(--text);
   nav.nav-menu {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: inherit;
-    padding: 0 10%;
+    background-color: var(--white);
+    
     .nav-list {
       display: grid;
       grid-auto-flow: column;
@@ -90,7 +60,15 @@ header.header {
       grid-gap: 16px;
       .nav-item {
         cursor: pointer;
+        i {
+          color: var(--text);
+        }
       };
+      #theme-toggle {
+        input{
+          display: none;
+        }
+      }
     };
   };
   .header-logo {
@@ -101,60 +79,55 @@ header.header {
     height: 60px;
     width: 200px;
     .header-logo-icon {
-      background: url('../assets/Logo.svg');
+      background: var(--logo);
       background-size: 100% 100%;
-      width: 100%;
-      height: 100%;
-    };
-    .header-logo-title {
-      background: url('../assets/ALPHA\ Shop.svg');
-      background-size: 100% 100%;
-      width: 100%;
+      width: 80%;
       height: 100%;
     };
   };
 };
 
+// TODO 三種狀態管理未完成
 // Wizard
 .step-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  height: 80px;
   .step-icon {
     display: inline-block;
     width: 24px;
     height: 24px;
     margin-right: 8px;
-    border: 1px solid #afb1bd;
+    border: 1px solid var(--border);
     border-radius: 50%;
     text-align: center;
-
     .text {
-      color: #afb1bd;
-      font-weight: 700;
-      font-size: 12px;
+      color: var(--border);
+      font-size: 1rem;
       line-height: 24px;
     };
-    &[data-order="true"] {
+    &[data-order=true]{
       background-color: #333333;
-    };
+      border: none;
+      .finished{
+        color: #fff;
+      }
+    }
   };
 
   .step-label {
-    font-weight: 400;
-    font-size: 16px;
     color: #afb1bd;
     &[data-order="true"] {
-      color: #2a2a2a;
+      color: var(--text);
     };
   };
   .step-bar {
     display: inline-block;
     width: 60px;
-    border-top: 2px solid #afb1bd;
+    border-top: 2px solid var(--border);
     &[data-order="true"] {
-      border-top-color: #2a2a2a;
+      border-top-color: #333333;
     };
   };
 };
@@ -194,12 +167,13 @@ header.header {
     .input-label {
       font-weight: 700;
       font-size: 12px;
-      color: #808080;
+      color: var(--label);
     };
     .form-control,
     .form-select {
       height: 40px;
-      border-color: #4a4a4a;
+      border-color: var(--inputBorder);
+      background-color: var(--white);
       font-weight: 400;
       font-size: 12px;
       color: #999999;
@@ -257,15 +231,18 @@ header.header {
           .sent-text {
             font-weight: 400;
             font-size: 14px;
-            color: #000000;
+            color: var(--text);
           };
-          .postage,
-          .period {
+          .postage {
             font-weight: 400;
-            font-size: 12px;
-            color: #000000;
+            font-size: 0.8rem; 
+            color: var(--period);
           }
         };
+        .period {
+          font-size: 0.8rem;
+          color: var(--period);
+        }
       };
     };
   };
@@ -346,6 +323,94 @@ header.header {
 }
 
 // Cart
+.cart-container {
+  grid-column: 3/4;
+  width: 100%;
+  border: 1px solid #f0f0f5;
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+
+  .cart-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 34px;
+    text-align: start;
+  }
+
+  .checkout {
+    display: flex;
+    justify-content: space-between;
+    height: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e5e5;
+    margin-bottom: 34px;
+    .product-price {
+      display: inline-block;
+      font-size: 16px;
+      color: block;
+      color: black;
+      font-weight: 700;
+    }
+  }
+
+  .product-item {
+    display: flex;
+    margin-bottom: 34px;
+    justify-content: space-between;
+
+    .img-container {
+      width: 100px;
+      height: 100px;
+      margin: 0 15px;
+      background-color: #e5e5e5;
+      border-radius: 4px;
+    };
+    .product-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: right;
+
+      .product-name {
+        font-weight: 400;
+        font-size: 16px;
+      };
+
+      .product-control-container {
+        top: 50px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        .product-control {
+          display: flex;
+          align-items: center;
+          margin-right: 30px;
+
+          .product-count {
+            display: inline-block;
+            width: 53px;
+            text-align: center;
+          };
+
+          .control-button {
+            color: #E6E6EB;
+          }
+        }
+      }
+    };
+
+    .product-price {
+      display: inline-block;
+      font-size: 16px;
+      color: block;
+      color: black;
+      font-weight: 700;
+    };
+  };
+}
 
 // Footer
 .footer {
@@ -373,7 +438,7 @@ header.header {
         margin: 4px;
         font-weight: 400;
         font-size: 16px;
-        color: $gary;
+        color: var(--gary);
       };
   };
 
@@ -385,12 +450,12 @@ header.header {
         margin: 4px;
         font-weight: 400;
         font-size: 16px;
-        color: $gary;
+        color: var(--gary);
       };
     .socialMidia { 
       i {
       margin: 15px;
-      color: $gary;
+      color: var(--gary);
       font-size: 24px;
       cursor: pointer;
     }}
