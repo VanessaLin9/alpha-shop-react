@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import { emailValidate, phoneValidate } from '../../utilize/validate';
+// import { emailValidate, phoneValidate } from '../../utilize/validate';
 
 const Step1 = memo(() => {
   const [state, setState] = useState({
