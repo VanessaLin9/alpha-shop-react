@@ -22,15 +22,23 @@
 // main
 .main-container {
   display: grid;
-  grid-template-columns: 6fr 1fr 5fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% 1fr 1fr 10%;
+  grid-template-areas: 
+  'title'
+  'main'
+  'cart'
+  'btn'
+  ;
   margin: 60px auto 0 auto;
   min-width: 768px;
   padding: 5% 10%;
   .main-title {
+    grid-area: title;
     width: 100%;
   };
   .register-container {
-    grid-column: 1/2;
+    grid-area: main;
     width: 100%;
   }
 }
@@ -290,6 +298,7 @@ header.header {
 
 // ProgressControl
 .button-group {
+  grid-area: btn;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -339,13 +348,18 @@ header.header {
   }
 }
 .first {
-  justify-content: flex-end;
+  .next{
+    width: 100%;
+  }
+ 
+  // justify-content: flex-end;
 }
 
 
 // Cart
 .cart-container {
-  grid-column: 3/4;
+  grid-area: cart;
+  // grid-column: 3/4;
   width: 100%;
   border: 1px solid #f0f0f5;
   border-radius: 8px;
@@ -437,6 +451,7 @@ header.header {
 
 // Footer
 .footer {
+  display: none;
   background: var(--footerBackground);
   h5 { @extend %h5;}
   .wrap {
@@ -490,6 +505,26 @@ header.header {
 
 // TODO 正在檢查這區
 /********* 電腦版樣式 *********/
-@media screen and (min-width: 375px) {
-  
+@media screen and (min-width: 768px) {
+  .main-container {
+    grid-template-columns: 6fr  5fr;
+    grid-template-rows: 10% 10% 1fr 10%;
+    grid-gap: 5% 5%;
+    grid-template-areas:
+    "title title"
+    "main cart"
+    "main cart"
+    "btn cart"
+    ;
+  }
+  .first {
+    .next {
+      width: 174px;
+    }
+    justify-content: flex-end;
+  }
+
+  .footer{
+    display: block;
+  }
 }

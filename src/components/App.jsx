@@ -58,12 +58,14 @@ const App = () => {
       <Header handleTheme={setDark} />
       <div className="main-container">
         <h2 className="main-title">結帳</h2>
+        {/* <div> */}
         <div className="register-container">
           <Wizard step={step} />
           <div>{stepContent}</div>
-          <ProgressControl step={step} onChangeStep={atChangeStep} />
         </div>
+        <ProgressControl step={step} onChangeStep={atChangeStep} />
         <Cart />
+        {/* </div> */}
       </div>
       <Footer />
     </div>
