@@ -203,25 +203,29 @@ header.header {
       max-width: 435px;
       padding: 20px;
       cursor: pointer;
+      // radio本人
       .form-check-input {
         margin-right: 20px;
+        border-color: var(--checkedRadioBackground);
+        background-color: var(--radioBackground);
         &:checked {
-          border-color: #2a2a2a;
-          background-color: #2a2a2a;
+          background-color: var(--checkedRadioBackground);
         }
         &:checked~.radio-box-border {
-          border-color: #2a2a2a;
+          border-color: var(--checkedRadiosBoxBorder);
         };
       };
+      // 專用外框
       .radio-box-border {
         position: absolute;
         top: 0;
         left: 0;
         height: 60px;
         width: 435px;
-        border: 1px solid #f0f0f5;
+        border: 1px solid var(--radiosBoxBorder);
         border-radius: 4px;
       };
+      // 資訊文字
       .radio-info {
         width: 100%;
         .sending-type {
@@ -248,6 +252,7 @@ header.header {
   };
 };
 
+// TODO 正在檢查這區
 // Step3
 .step2-form-container {
   min-height: 300px;
