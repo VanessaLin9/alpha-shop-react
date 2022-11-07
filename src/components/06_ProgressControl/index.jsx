@@ -12,9 +12,8 @@ const ProgressControl: React.FC<ProgressControlProps> = React.memo((props) => {
   const firstBtn = (
     <section className="button-group first" data-phase="address">
       <button className="next" onClick={() => onChangeStep(2)}>
-        下一步
-        <span className="arrow-line" />
-        <span className="arrow-head">{'>'}</span>
+        <div>下一步</div>
+        <div className="arrow-line" />
       </button>
     </section>
   );
@@ -22,23 +21,20 @@ const ProgressControl: React.FC<ProgressControlProps> = React.memo((props) => {
   const secondBtn = (
     <section className="button-group" data-phase="shipping">
       <button className="prev" onClick={() => onChangeStep(1)}>
-        <span className="arrow-head">{'<'}</span>
-        <span className="arrow-line prev-arrow" />
-        上一步
+        <div className="arrow-line" />
+        <div>上一步</div>
       </button>
       <button className="next" onClick={() => onChangeStep(3)}>
-        下一步
-        <span className="arrow-line" />
-        <span className="arrow-head">{'>'}</span>
+        <div>下一步</div>
+        <div className="arrow-line" />
       </button>
     </section>
   );
   const thirdBtn = (
     <section className="button-group" data-phase="credit-card">
       <button className="prev" onClick={() => onChangeStep(2)}>
-        <span className="arrow-head">{'<'}</span>
-        <span className="arrow-line prev-arrow" />
-        上一步
+        <div className="arrow-line" />
+        <div>上一步</div>
       </button>
       <button className="next" onClick={() => onChangeStep(4)}>
         確認下單

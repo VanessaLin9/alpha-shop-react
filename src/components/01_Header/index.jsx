@@ -1,6 +1,15 @@
 import { memo } from 'react';
 
-const Header = memo(() => {
+const Header = memo((props) => {
+  const { handleTheme } = props;
+  function themeToggle(e) {
+    if (e.target.checked === true) {
+      handleTheme('dark');
+    } else {
+      handleTheme('light');
+    }
+  }
+
   return (
     <section data-name="Header">
       <header className="header">
@@ -47,15 +56,15 @@ const Header = memo(() => {
               </a>
             </li>
             <li id="theme-toggle" className="nav-item">
-              <a href="#moon">
+              <label>
+                <input type="checkbox" onChange={themeToggle} />
                 <i className="fas fa-moon" />
-              </a>
+              </label>
             </li>
           </ul>
         </nav>
         <a className="header-logo" href="#logo">
           <div className="header-logo-icon" />
-          <div className="header-logo-title" />
         </a>
       </header>
     </section>
