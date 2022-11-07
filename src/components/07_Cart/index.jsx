@@ -3,7 +3,6 @@ import shallow from 'zustand/shallow';
 import useCartStore from '../../store/useCartStore';
 import LineItem from './LineItem';
 
-
 const Cart = memo(() => {
   const {
     step,

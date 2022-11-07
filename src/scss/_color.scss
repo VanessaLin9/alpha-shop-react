@@ -11,6 +11,9 @@ html {
   --checkedRadiosBoxBorder: #2a2a2a;
   --radioBackground: #fff;
   --checkedRadioBackground: #2A2A2A;
+  --carBackground: #fff;
+  --controlButton: #E6E6EB;
+  --footerBackground: #e5e5e5;
 }
 
 html [data-theme="dark"] {
@@ -25,4 +28,7 @@ html [data-theme="dark"] {
   --checkedRadiosBoxBorder: #fff;
   --radioBackground: #333333;
   --checkedRadioBackground: #333333;
+  --carBackground: #383838;
+  --controlButton: #808080;
+  --footerBackground: #333333;
 }
