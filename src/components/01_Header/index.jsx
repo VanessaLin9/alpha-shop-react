@@ -13,7 +13,8 @@ const Header = memo((props) => {
   return (
     <section data-name="Header">
       <header className="header">
-        <nav className="nav-menu">
+        <input type="checkbox" className="nav-toggle" id="navbar-toggle" />
+        <nav className="navbar">
           <ul className="nav-list">
             <li className="nav-item">
               <a className="nav-link" href="#boys">
@@ -40,29 +41,26 @@ const Header = memo((props) => {
                 聯絡我們
               </a>
             </li>
-          </ul>
 
-          <ul className="nav-list">
             {/* <!-- search --> */}
-            <li className="nav-item">
+            <li className="nav-item item-icon">
               <a href="#search">
                 <i className="fas fa-search" />
               </a>
-            </li>
-            {/* <!-- cart --> */}
-            <li className="nav-item">
+              {/* <!-- cart --> */}
               <a href="#cart">
                 <i className="fas fa-shopping-cart" />
               </a>
-            </li>
-            <li id="theme-toggle" className="nav-item">
-              <label>
+              <label id="theme-toggle">
                 <input type="checkbox" onChange={themeToggle} />
                 <i className="fas fa-moon" />
               </label>
             </li>
           </ul>
         </nav>
+        <label htmlFor="navbar-toggle" className="navbar-toggle-label">
+          <span className="hamburger" />
+        </label>
         <a className="header-logo" href="#logo">
           <div className="header-logo-icon" />
         </a>
