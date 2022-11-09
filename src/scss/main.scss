@@ -622,9 +622,10 @@ header.header {
         align-items: center;
         grid-auto-flow: column;
         justify-content: start;
-        grid-gap: 1.4rem;
+        // grid-gap: 1.4rem;
         .nav-item {
           all: unset;
+          margin-right: 1.4rem;
         }
         .item-icon {
           position: absolute;

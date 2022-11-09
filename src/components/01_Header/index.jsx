@@ -1,12 +1,17 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 
 const Header = memo((props) => {
   const { handleTheme } = props;
+  const [theme, setTheme] = useState(true);
+
   function themeToggle(e) {
     if (e.target.checked === true) {
       handleTheme('dark');
+      setTheme(false);
+      console.log(theme);
     } else {
       handleTheme('light');
+      setTheme(true);
     }
   }
 
@@ -53,7 +58,7 @@ const Header = memo((props) => {
               </a>
               <label id="theme-toggle">
                 <input type="checkbox" onChange={themeToggle} />
-                <i className="fas fa-moon" />
+                <i className={theme ? 'fas fa-moon' : 'fas fa-sun'} />
               </label>
             </li>
           </ul>
