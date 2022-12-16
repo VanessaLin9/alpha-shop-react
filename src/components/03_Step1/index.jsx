@@ -1,45 +1,58 @@
-import { memo, useState } from 'react';
-// import { emailValidate, phoneValidate } from '../../utilize/validate';
+/* eslint-disable react/jsx-props-no-spreading */
+import { memo } from 'react';
+import { useForm } from 'react-hook-form';
+import { emailValidate, phoneValidate } from '../../utilize/validate';
 
+// TODO 改由 react hook form 接手
 const Step1 = memo(() => {
-  const [state, setState] = useState({
-    title: 'mr',
-    name: '',
-    tel: '',
-    mail: '',
-    city: '',
-    address: '',
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  function atChange(e) {
-    const { value, name } = e.target;
+  // const [state, setState] = useState({
+  //   title: 'mr',
+  //   name: '',
+  //   tel: '',
+  //   mail: '',
+  //   city: '',
+  //   address: '',
+  // });
 
-    // TODO 表單驗證
-    // switch (name) {
-    //   case 'mail': {
-    //     emailValidate.test()
-    //     break;
-    //   }
-    //   case 'tel': {
-    //     phoneValidate.test()
-    //     break;
-    //   }
-    //   default: {
-    //     break;
-    //   }
-    // };
+  // function atChange(e) {
+  //   const { value, name } = e.target;
 
-    setState((pre) => {
-      return {
-        ...pre,
-        [name]: value,
-      };
-    });
-  }
+  const atSubmit = (data) => {
+    console.log(data);
+  };
+
+  // TODO 表單驗證改由 react hook form 接手
+  // switch (name) {
+  //   case 'mail': {
+  //     emailValidate.test()
+  //     break;
+  //   }
+  //   case 'tel': {
+  //     phoneValidate.test()
+  //     break;
+  //   }
+  //   default: {
+  //     break;
+  //   }
+  // };
+
+  //   setState((pre) => {
+  //     return {
+  //       ...pre,
+  //       [name]: value,
+  //     };
+  //   });
+  // }
 
   return (
     <section className="step1-form-container" data-name="Step1">
-      <form data-phase="address">
+      <form data-phase="address" onSubmit={handleSubmit(atSubmit)}>
         <h3 className="form-title">寄送地址</h3>
         <section className="form-body ">
           {/* len 1 */}
@@ -47,12 +60,7 @@ const Step1 = memo(() => {
             <div className="group input-title">
               <div className="input-label">稱謂</div>
               <div className="select-container">
-                <select
-                  className="form-select"
-                  name="title"
-                  value={state.title}
-                  onChange={atChange}
-                >
+                <select className="form-select" {...register('title')}>
                   <option value="mr">先生</option>
                   <option value="ms">女士</option>
                   <option value="mx">不明</option>
@@ -66,10 +74,9 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="text"
                 placeholder="請輸入姓名"
-                name="name"
-                value={state.name}
-                onChange={atChange}
+                {...register('name', { required: true })}
               />
+              {errors.name && <span> This field is required </span>}
             </div>
           </div>
           {/* len 2 */}
@@ -80,10 +87,9 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="tel"
                 placeholder="請輸入行動電話"
-                name="tel"
-                value={state.tel}
-                onChange={atChange}
+                {...register('tel', { required: true, pattern: phoneValidate })}
               />
+              {errors.tel && <span> This field is required </span>}
             </div>
             <div className="group input-mail">
               <div className="input-label">Email</div>
@@ -91,10 +97,12 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="email"
                 placeholder="請輸入電子郵件"
-                name="mail"
-                value={state.mail}
-                onChange={atChange}
+                {...register('mail', {
+                  required: true,
+                  pattern: emailValidate,
+                })}
               />
+              {errors.mail && <span> This field is required </span>}
             </div>
           </div>
           {/* len 3 */}
@@ -102,13 +110,7 @@ const Step1 = memo(() => {
             <div className="group input-city">
               <div className="input-label">縣市</div>
               <div className="select-container">
-                <select
-                  className="form-select"
-                  name="city"
-                  value={state.city}
-                  onChange={atChange}
-                  required
-                >
+                <select className="form-select" {...register('city')}>
                   <option value="" disabled>
                     請選擇縣市
                   </option>
@@ -150,10 +152,9 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="text"
                 placeholder="請輸入地址"
-                name="address"
-                value={state.address}
-                onChange={atChange}
+                {...register('address', { required: true })}
               />
+              {errors.address && <span> This field is required </span>}
             </div>
           </div>
         </section>

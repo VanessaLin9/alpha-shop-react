@@ -1,4 +1,3 @@
-
 {
   "name": "alpha-shop",
   "homepage": "https://main.dbfkjg1s1o2x7.amplifyapp.com/",
@@ -11,6 +10,7 @@
     "gh-pages": "^4.0.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-hook-form": "^7.36.0",
     "react-input-mask": "^2.0.4",
     "react-router-dom": "^6.3.0",
     "zustand": "^4.0.0"

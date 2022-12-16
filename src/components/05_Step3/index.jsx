@@ -1,27 +1,40 @@
-import { memo, useState } from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+import { memo } from 'react';
+import { useForm } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 
 const Step3 = memo(() => {
-  const [state, setState] = useState({
-    cardName: '',
-    cardNumber: '',
-    validDay: '',
-    cvcCode: '',
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  function atChange(e) {
-    const { name, value } = e.target;
-    setState((pre) => {
-      return {
-        ...pre,
-        [name]: value,
-      };
-    });
-  }
+  // 改由 react hooks form 接手
+  // const [state, setState] = useState({
+  //   cardName: '',
+  //   cardNumber: '',
+  //   validDay: '',
+  //   cvcCode: '',
+  // });
+
+  // function atChange(e) {
+  //   const { name, value } = e.target;
+  //   setState((pre) => {
+  //     return {
+  //       ...pre,
+  //       [name]: value,
+  //     };
+  //   });
+  // }
+
+  const atSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <section className="step2-form-container" data-name="Step3">
-      <form data-phase="credit-card">
+      <form data-phase="credit-card" onSubmit={handleSubmit(atSubmit)}>
         <h3 className="form-title">付款資訊</h3>
 
         <section className="form-body">
@@ -32,10 +45,9 @@ const Step3 = memo(() => {
                 className="form-control"
                 type="text"
                 placeholder="John Doe"
-                name="cardName"
-                value={state.cardName}
-                onChange={atChange}
+                {...register('cardName', { required: true, maxLength: 24 })}
               />
+              {errors.cardName && <span>This field is required</span>}
             </div>
           </div>
 
@@ -47,10 +59,9 @@ const Step3 = memo(() => {
                 type="text"
                 placeholder="1111 2222 3333 4444"
                 mask="9999 9999 9999 9999"
-                name="cardNumber"
-                value={state.cardNumber}
-                onChange={(e) => atChange(e)}
+                {...register('cardNumber', { required: true, maxLength: 16 })}
               />
+              {errors.cardNumber && <span>This field is required</span>}
             </div>
           </div>
 
@@ -62,10 +73,9 @@ const Step3 = memo(() => {
                 type="text"
                 placeholder="MM/YY"
                 mask="99/99"
-                name="validDay"
-                value={state.validDay}
-                onChange={(e) => atChange(e)}
+                {...register('validDay', { required: true })}
               />
+              {errors.validDay && <span>This field is required</span>}
             </div>
 
             <div className="group">
@@ -75,10 +85,9 @@ const Step3 = memo(() => {
                 type="text"
                 placeholder="123"
                 mask="999"
-                name="cvcCode"
-                value={state.cvcCode}
-                onChange={(e) => atChange(e)}
+                {...register('cvcCode', { required: true })}
               />
+              {errors.cvcCode && <span>This field is required</span>}
             </div>
           </div>
         </section>
