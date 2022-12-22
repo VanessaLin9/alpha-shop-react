@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { memo } from 'react';
 import { useForm } from 'react-hook-form';
+import InputMask from 'react-input-mask';
 import { emailValidate, phoneValidate } from '../../utilize/validate';
 
-// TODO 改由 react hook form 接手
+// 改由 react hook form 接手
 const Step1 = memo(() => {
   const {
     register,
@@ -27,7 +28,7 @@ const Step1 = memo(() => {
     console.log(data);
   };
 
-  // TODO 表單驗證改由 react hook form 接手
+  // 表單驗證改由 react hook form 接手
   // switch (name) {
   //   case 'mail': {
   //     emailValidate.test()
@@ -83,10 +84,11 @@ const Step1 = memo(() => {
           <div className="form-row">
             <div className="group input-tel">
               <div className="input-label">電話</div>
-              <input
+              <InputMask
                 className="form-control"
                 type="tel"
                 placeholder="請輸入行動電話"
+                mask="0\999-999999"
                 {...register('tel', { required: true, pattern: phoneValidate })}
               />
               {errors.tel && <span> This field is required </span>}
