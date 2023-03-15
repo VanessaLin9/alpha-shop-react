@@ -5,50 +5,26 @@ type ProgressControlProps = {
   onChangeStep: (step: number) => void,
 };
 
-const ProgressControl: React.FC<ProgressControlProps> = React.memo((props) => {
+const ProgressControl: React.FC<ProgressControlProps> = (props) => {
   const { step, onChangeStep } = props;
-  let BtnGroup;
 
-  const firstBtn = (
-    <section className="button-group first" data-phase="address">
-      <button className="next" onClick={() => onChangeStep(2)}>
-        <div>下一步</div>
-        <div className="arrow-line" />
-      </button>
+  return (
+    <section data-name="ProgressControl">
+      <section className="button-group" data-phase="shipping">
+        <button
+          className="prev"
+          disable={step === 1}
+          onClick={() => onChangeStep(step - 1)}
+        >
+          {/* <div className="arrow-line" /> */}
+          上一步
+        </button>
+        <button className="next" onClick={() => onChangeStep(step + 1)}>
+          {step === 3 ? 'checkout' : '下一步'}
+          {/* <div className="arrow-line" /> */}
+        </button>
+      </section>
     </section>
   );
-
-  const secondBtn = (
-    <section className="button-group" data-phase="shipping">
-      <button className="prev" onClick={() => onChangeStep(1)}>
-        <div className="arrow-line" />
-        <div>上一步</div>
-      </button>
-      <button className="next" onClick={() => onChangeStep(3)}>
-        <div>下一步</div>
-        <div className="arrow-line" />
-      </button>
-    </section>
-  );
-  const thirdBtn = (
-    <section className="button-group" data-phase="credit-card">
-      <button className="prev" onClick={() => onChangeStep(2)}>
-        <div className="arrow-line" />
-        <div>上一步</div>
-      </button>
-      <button className="next" onClick={() => onChangeStep(4)}>
-        確認下單
-      </button>
-    </section>
-  );
-
-  if (step === 1) {
-    BtnGroup = firstBtn;
-  } else if (step === 2) {
-    BtnGroup = secondBtn;
-  } else {
-    BtnGroup = thirdBtn;
-  }
-  return <section data-name="ProgressControl">{BtnGroup}</section>;
-});
-export default ProgressControl;
+};
+export default React.memo(ProgressControl);
