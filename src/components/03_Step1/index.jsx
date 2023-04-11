@@ -2,54 +2,29 @@
 import { memo } from 'react';
 import { useForm } from 'react-hook-form';
 import InputMask from 'react-input-mask';
+// import { type UserInfo } from '../../type';
 import { emailValidate, phoneValidate } from '../../utilize/validate';
 
-// 改由 react hook form 接手
+export interface Step1Ref {
+  onSubmit(): Promise<UserInfo>;
+}
+
+// type Step1Props = {
+//   userInfo?: UserInfo,
+//   onUpdateUserInfo: (userInfo: UserInfo) => void,
+// };
+
 const Step1 = memo(() => {
+  // const { userInfo = {}, onUpdateUserInfo } = props;
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  // const [state, setState] = useState({
-  //   title: 'mr',
-  //   name: '',
-  //   tel: '',
-  //   mail: '',
-  //   city: '',
-  //   address: '',
-  // });
-
-  // function atChange(e) {
-  //   const { value, name } = e.target;
-
   const atSubmit = (data) => {
     console.log(data);
   };
-
-  // 表單驗證改由 react hook form 接手
-  // switch (name) {
-  //   case 'mail': {
-  //     emailValidate.test()
-  //     break;
-  //   }
-  //   case 'tel': {
-  //     phoneValidate.test()
-  //     break;
-  //   }
-  //   default: {
-  //     break;
-  //   }
-  // };
-
-  //   setState((pre) => {
-  //     return {
-  //       ...pre,
-  //       [name]: value,
-  //     };
-  //   });
-  // }
 
   return (
     <section className="step1-form-container" data-name="Step1">
@@ -88,7 +63,7 @@ const Step1 = memo(() => {
                 className="form-control"
                 type="tel"
                 placeholder="請輸入行動電話"
-                mask="0\999-999999"
+                // mask="0\999-999999"
                 {...register('tel', { required: true, pattern: phoneValidate })}
               />
               {errors.tel && <span> This field is required </span>}

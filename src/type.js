@@ -32,4 +32,4 @@ export type UserInfo = {
   email: string,
   city: string,
   address: string,
-}
+};
