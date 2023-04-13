@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/alpha-shop-react/static/css/main.31a2bea4.css",
-    "main.js": "/alpha-shop-react/static/js/main.45053628.js",
+    "main.js": "/alpha-shop-react/static/js/main.40fd9765.js",
     "static/media/Logo-light.svg": "/alpha-shop-react/static/media/Logo-light.7ea861ea30dffdc88680.svg",
     "static/media/Logo.svg": "/alpha-shop-react/static/media/Logo.ffbadefde19cba71334a.svg",
     "index.html": "/alpha-shop-react/index.html",
     "main.31a2bea4.css.map": "/alpha-shop-react/static/css/main.31a2bea4.css.map",
-    "main.45053628.js.map": "/alpha-shop-react/static/js/main.45053628.js.map"
+    "main.40fd9765.js.map": "/alpha-shop-react/static/js/main.40fd9765.js.map"
   },
   "entrypoints": [
     "static/css/main.31a2bea4.css",
-    "static/js/main.45053628.js"
+    "static/js/main.40fd9765.js"
   ]
 }
